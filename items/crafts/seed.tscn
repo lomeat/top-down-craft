@@ -1,19 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://dv1jtq7t566fw"]
+[gd_scene load_steps=3 format=3 uid="uid://dceuqk1c1de4f"]
 
-[ext_resource type="Texture2D" path="res://items/wood.png" id="1_ubt5w"]
+[ext_resource type="Texture2D" uid="uid://di271y5gvbcjn" path="res://items/seed.png" id="1_2py6g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oc6xg"]
-size = Vector2(32, 24)
+size = Vector2(15.5, 20)
 
-[node name="Wood" type="Area2D"]
+[node name="Seed" type="Area2D"]
 scale = Vector2(4, 4)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("1_ubt5w")
+texture = ExtResource("1_2py6g")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
+position = Vector2(-0.75, -0.75)
 shape = SubResource("RectangleShape2D_oc6xg")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]

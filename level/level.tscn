@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://b70mk50ktimrw" path="res://player/player.tscn" id="1_32yuu"]
 [ext_resource type="Script" path="res://level/level.gd" id="1_nv65x"]
-[ext_resource type="PackedScene" uid="uid://lk85nur55q0a" path="res://items/bush.tscn" id="3_37xdl"]
-[ext_resource type="PackedScene" uid="uid://1yh3r2pon2di" path="res://items/wood.tscn" id="3_t45my"]
+[ext_resource type="PackedScene" uid="uid://btm53i633mdpy" path="res://items/bush.tscn" id="3_37xdl"]
+[ext_resource type="PackedScene" uid="uid://dv1jtq7t566fw" path="res://items/wood.tscn" id="3_t45my"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_nv65x")

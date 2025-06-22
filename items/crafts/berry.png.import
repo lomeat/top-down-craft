@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://k2uhg5ru7tjk"
-path="res://.godot/imported/wood.png-3a8ec01cc1bf9a9d49a45aadeb223d81.ctex"
+uid="uid://dyr4s3mte2tga"
+path="res://.godot/imported/berry.png-6b99fb242b9009ff8e52709e6c0c6c8f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://items/wood.png"
-dest_files=["res://.godot/imported/wood.png-3a8ec01cc1bf9a9d49a45aadeb223d81.ctex"]
+source_file="res://items/crafts/berry.png"
+dest_files=["res://.godot/imported/berry.png-6b99fb242b9009ff8e52709e6c0c6c8f.ctex"]
 
 [params]
 
