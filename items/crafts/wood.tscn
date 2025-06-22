@@ -7,17 +7,18 @@ size = Vector2(32, 24)
 
 [node name="Wood" type="Area2D"]
 scale = Vector2(4, 4)
+metadata/_edit_group_ = true
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 0.305882)
+position = Vector2(2, 2)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_ubt5w")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_ubt5w")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-shape = SubResource("RectangleShape2D_oc6xg")
-
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="RigidBody2D"]
 visible = false
 shape = SubResource("RectangleShape2D_oc6xg")

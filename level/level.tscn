@@ -15,49 +15,58 @@ position = Vector2(1311, 186)
 rotation = -0.785397
 scale = Vector2(5, 5)
 loot_item = ExtResource("3_5im8i")
+max_health = 1
 
 [node name="Bush2" parent="Objects" instance=ExtResource("3_37xdl")]
 position = Vector2(1401, 365)
 rotation = -0.418879
 scale = Vector2(5, 5)
 loot_item = ExtResource("3_5im8i")
+max_health = 1
 
 [node name="Bush3" parent="Objects" instance=ExtResource("3_37xdl")]
 position = Vector2(1511, 214)
 rotation = 0.506145
 scale = Vector2(5, 5)
 loot_item = ExtResource("3_5im8i")
+max_health = 1
 
 [node name="Bush4" parent="Objects" instance=ExtResource("3_37xdl")]
 position = Vector2(1188, 817)
 scale = Vector2(5, 5)
 loot_item = ExtResource("3_5im8i")
+max_health = 1
 
 [node name="Bush5" parent="Objects" instance=ExtResource("3_37xdl")]
 position = Vector2(1030, 873)
 scale = Vector2(5, 5)
 loot_item = ExtResource("3_5im8i")
+max_health = 1
 
 [node name="Bush6" parent="Objects" instance=ExtResource("3_37xdl")]
 position = Vector2(1364, 914)
 scale = Vector2(5, 5)
 loot_item = ExtResource("3_5im8i")
+max_health = 1
 
 [node name="Bush7" parent="Objects" instance=ExtResource("3_37xdl")]
 modulate = Color(0.8, 0.752, 0.752, 1)
 position = Vector2(1202, 972)
 scale = Vector2(5, 5)
 loot_item = ExtResource("3_5im8i")
+max_health = 1
 
 [node name="Bush8" parent="Objects" instance=ExtResource("3_37xdl")]
 position = Vector2(387, 1008)
 scale = Vector2(5, 5)
 loot_item = ExtResource("3_5im8i")
+max_health = 1
 
 [node name="Bush9" parent="Objects" instance=ExtResource("3_37xdl")]
 position = Vector2(221, 969)
 scale = Vector2(5, 5)
 loot_item = ExtResource("3_5im8i")
+max_health = 1
 
 [node name="Player" parent="." instance=ExtResource("1_32yuu")]
 position = Vector2(591, 475)
