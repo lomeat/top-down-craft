@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://b70mk50ktimrw" path="res://player/player.tscn" id="1_32yuu"]
 [ext_resource type="Script" path="res://level/level.gd" id="1_nv65x"]
-[ext_resource type="PackedScene" uid="uid://btm53i633mdpy" path="res://items/bush.tscn" id="3_37xdl"]
-[ext_resource type="PackedScene" uid="uid://dv1jtq7t566fw" path="res://items/wood.tscn" id="3_t45my"]
+[ext_resource type="PackedScene" uid="uid://1yh3r2pon2di" path="res://items/crafts/wood.tscn" id="3_5im8i"]
+[ext_resource type="PackedScene" uid="uid://lk85nur55q0a" path="res://items/objects/bush.tscn" id="3_37xdl"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_nv65x")
@@ -14,50 +14,50 @@ script = ExtResource("1_nv65x")
 position = Vector2(1311, 186)
 rotation = -0.785397
 scale = Vector2(5, 5)
-loot_item = ExtResource("3_t45my")
+loot_item = ExtResource("3_5im8i")
 
 [node name="Bush2" parent="Objects" instance=ExtResource("3_37xdl")]
 position = Vector2(1401, 365)
 rotation = -0.418879
 scale = Vector2(5, 5)
-loot_item = ExtResource("3_t45my")
+loot_item = ExtResource("3_5im8i")
 
 [node name="Bush3" parent="Objects" instance=ExtResource("3_37xdl")]
-position = Vector2(1487, 217)
+position = Vector2(1511, 214)
 rotation = 0.506145
 scale = Vector2(5, 5)
-loot_item = ExtResource("3_t45my")
+loot_item = ExtResource("3_5im8i")
 
 [node name="Bush4" parent="Objects" instance=ExtResource("3_37xdl")]
 position = Vector2(1188, 817)
 scale = Vector2(5, 5)
-loot_item = ExtResource("3_t45my")
+loot_item = ExtResource("3_5im8i")
 
 [node name="Bush5" parent="Objects" instance=ExtResource("3_37xdl")]
 position = Vector2(1030, 873)
 scale = Vector2(5, 5)
-loot_item = ExtResource("3_t45my")
+loot_item = ExtResource("3_5im8i")
 
 [node name="Bush6" parent="Objects" instance=ExtResource("3_37xdl")]
 position = Vector2(1364, 914)
 scale = Vector2(5, 5)
-loot_item = ExtResource("3_t45my")
+loot_item = ExtResource("3_5im8i")
 
 [node name="Bush7" parent="Objects" instance=ExtResource("3_37xdl")]
 modulate = Color(0.8, 0.752, 0.752, 1)
 position = Vector2(1202, 972)
 scale = Vector2(5, 5)
-loot_item = ExtResource("3_t45my")
+loot_item = ExtResource("3_5im8i")
 
 [node name="Bush8" parent="Objects" instance=ExtResource("3_37xdl")]
 position = Vector2(387, 1008)
 scale = Vector2(5, 5)
-loot_item = ExtResource("3_t45my")
+loot_item = ExtResource("3_5im8i")
 
 [node name="Bush9" parent="Objects" instance=ExtResource("3_37xdl")]
 position = Vector2(221, 969)
 scale = Vector2(5, 5)
-loot_item = ExtResource("3_t45my")
+loot_item = ExtResource("3_5im8i")
 
 [node name="Player" parent="." instance=ExtResource("1_32yuu")]
 position = Vector2(591, 475)
