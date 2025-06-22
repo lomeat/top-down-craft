@@ -1,4 +1,4 @@
-class_name Item
+class_name ItemObject
 extends StaticBody2D
 
 @onready var sprite := $Sprite2D

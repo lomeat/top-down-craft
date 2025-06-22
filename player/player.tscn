@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b70mk50ktimrw"]
+[gd_scene load_steps=8 format=3 uid="uid://b70mk50ktimrw"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_ke72k"]
 [ext_resource type="Texture2D" uid="uid://dgld6yiukcfx3" path="res://player/player_circle.png" id="2_ey820"]
@@ -115,6 +115,8 @@ _data = {
 "swing_attack": SubResource("Animation_lbotf")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_48cfw"]
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_ke72k")
 
@@ -156,8 +158,15 @@ libraries = {
 }
 playback_auto_capture = false
 
+[node name="PickUpArea" type="Area2D" parent="."]
+scale = Vector2(6, 6)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickUpArea"]
+shape = SubResource("CircleShape2D_48cfw")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_ey820")
 
 [connection signal="body_entered" from="Sword/Sprite2D/Area2D" to="." method="_on_sword_area_body_entered"]
+[connection signal="body_entered" from="PickUpArea" to="." method="_on_pick_up_area_body_entered"]

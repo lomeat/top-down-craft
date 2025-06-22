@@ -2,15 +2,21 @@ extends Node2D
 
 @onready var player: Player = $Player
 
+var inventory = []
+
 func _ready() -> void:
 	player.sword_attacked.connect(damage_item)
 
-
 func damage_item(target: Node2D, _damage: int):
-	if is_instance_valid(target) and target is Item:
+	if is_instance_valid(target) and target is ItemObject:
 		target.take_damage(_damage)
 
-
+# func collect(bodies: Array[Node2D]):
+# 	if Input.is_action_just_pressed("pick_up"):
+# 		for target in bodies:
+# 			if is_instance_valid(target) and target is ItemCraft:
+# 				inventory.append(target)
+# 				target.destroy()
 
 
 

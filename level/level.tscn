@@ -1,12 +1,12 @@
 [gd_scene load_steps=5 format=3 uid="uid://c3c56kupjcxgx"]
 
 [ext_resource type="PackedScene" uid="uid://b70mk50ktimrw" path="res://player/player.tscn" id="1_32yuu"]
-[ext_resource type="Script" path="res://level/level.gd" id="1_nv65x"]
+[ext_resource type="Script" path="res://level/game_controller.gd" id="1_f2i2t"]
 [ext_resource type="PackedScene" uid="uid://1yh3r2pon2di" path="res://items/crafts/wood.tscn" id="3_5im8i"]
 [ext_resource type="PackedScene" uid="uid://lk85nur55q0a" path="res://items/objects/bush.tscn" id="3_37xdl"]
 
 [node name="Level" type="Node2D"]
-script = ExtResource("1_nv65x")
+script = ExtResource("1_f2i2t")
 
 [node name="Objects" type="Node2D" parent="."]
 

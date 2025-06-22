@@ -3,10 +3,11 @@ extends CharacterBody2D
 
 @onready var sprite := $Sprite2D
 @onready var sword_area := $Sword/Sprite2D/Area2D
-@onready var sword_collision := $Sword/Sprite2D/Area2D/CollisionPollygon2D
 @onready var sword_anim := $Sword/AnimationPlayer
+# @onready var pick_up_area := $PickUpArea
 
 signal sword_attacked(target: Node2D, _damage: int)
+# signal can_collected(bodies: Array[Node2D])
 
 @export var speed := 1000
 @export var acceleration := 40
@@ -74,6 +75,12 @@ func attack(delta: float) -> void:
 		
 
 func _on_sword_area_body_entered(body: Node2D) -> void:
-	print("Sword area target name: ", body.name)
+	# print("Sword area target name: ", body.name)
 	if is_attacking:
 		sword_attacked.emit(body, damage)
+
+
+# func _on_pick_up_area_body_entered(_body: Node2D) -> void:
+# 	var bodies = pick_up_area.get_overlapping_bodies()
+# 	can_collected.emit(bodies)
+		
