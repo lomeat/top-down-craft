@@ -1,0 +1,163 @@
+[gd_scene load_steps=7 format=3 uid="uid://b70mk50ktimrw"]
+
+[ext_resource type="Script" path="res://player/player.gd" id="1_ke72k"]
+[ext_resource type="Texture2D" uid="uid://dgld6yiukcfx3" path="res://player/player_circle.png" id="2_ey820"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tmax3"]
+radius = 16.0
+
+[sub_resource type="Animation" id="Animation_wh07o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.976667, 0.3, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_lbotf"]
+resource_name = "swing_sword"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.785397, 0.785397]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0.976667, 0.3, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mwdjt"]
+_data = {
+"RESET": SubResource("Animation_wh07o"),
+"swing_attack": SubResource("Animation_lbotf")
+}
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+script = ExtResource("1_ke72k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_tmax3")
+
+[node name="Sword" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Sword"]
+visible = false
+modulate = Color(1, 0.976667, 0.3, 1)
+position = Vector2(10, -4.76837e-07)
+centered = false
+metadata/_edit_group_ = true
+
+[node name="Area2D" type="Area2D" parent="Sword/Sprite2D"]
+position = Vector2(-7.07107, 7.07106)
+rotation = -0.785397
+
+[node name="CollisionPollygon2D" type="CollisionPolygon2D" parent="Sword/Sprite2D/Area2D"]
+position = Vector2(24, -16)
+polygon = PackedVector2Array(-14, 17, -12, 15, 14.0001, 39.9999, 9.00006, 45)
+
+[node name="ColorRect" type="ColorRect" parent="Sword/Sprite2D"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -1.5
+offset_right = 36.0
+offset_bottom = 1.5
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sword"]
+libraries = {
+"": SubResource("AnimationLibrary_mwdjt")
+}
+playback_auto_capture = false
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_ey820")
+
+[connection signal="body_entered" from="Sword/Sprite2D/Area2D" to="." method="_on_sword_area_body_entered"]
