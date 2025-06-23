@@ -38,16 +38,17 @@ func drop_loot():
 		if rng.randf_range(0, 100) <= entry.drop_chance:
 			var drop_count = rng.randi_range(entry.min_amount, entry.max_amount)
 			for i in range(drop_count):
-				spawn_item(entry.item, i, drop_count)
+				spawn_item(entry.item, drop_count)
 			
 
-func spawn_item(item_res: ItemCraftResource, index: int, total: int):
+func spawn_item(item_res: ItemCraftResource, total: int):
 	var item = preload("res://items/item_drop.tscn").instantiate()
 	var spread_radius := 128.0
+	var rand_int = randf_range(2, total)
 	var angle := rng.randf_range(0, TAU)
 	var offset := Vector2(
-		cos(angle) * spread_radius / 2 * sqrt(float(index) / total), 
-		sin(angle) * spread_radius * sqrt(float(index) / total)
+		cos(angle) * spread_radius / 2 * sqrt(float(rand_int) / 5), 
+		sin(angle) * spread_radius * sqrt(float(rand_int) / 5)
 	)
 
 	item.setup(item_res, 1)
