@@ -50,7 +50,7 @@ func spawn_item(item_res: ItemCraftResource, index: int, total: int):
 		sin(angle) * spread_radius * sqrt(float(index) / total)
 	)
 
-	item.setup(item_res, total)
+	item.setup(item_res, 1)
 	item.global_position = global_position
 	var target_position = global_position + offset
 	

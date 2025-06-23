@@ -45,7 +45,7 @@ func _on_item_collected(item: ItemDrop):
 	else:
 		inventory[item.item_res.id] = item.count
 	
-	print("Inventory updated: ", inventory)
+	print("To inventory was added: ", item.item_res.name)
 	
 	update_inventory_ui()
 
