@@ -47,6 +47,8 @@ func run_animation(state_anim := "idle"):
 	if not can_picked_up:
 		return
 
+	animation.stop()
+
 	match state_anim:
 		"idle":
 			animate_idle()
@@ -60,20 +62,17 @@ func run_animation(state_anim := "idle"):
 
 
 func animate_ready_pick_up():
-	animation.kill()
 	animation = create_tween()
 	animation.set_loops(0)
 	animation.tween_property(self, "scale", Vector2(1.2, 1.2), 0.5)
 	animation.tween_property(self, "scale", Vector2(1.0, 1.0), 0.5)
 
 func animate_idle():
-	animation.kill()
 	animation = create_tween()
 	animation.tween_property(self, "scale", Vector2.ONE, 0.1)
 
 func animate_collect(duration: float) -> void:
 	var player_pos = get_tree().get_first_node_in_group("player").global_position
-	animation.kill()
 	animation = create_tween()
 	animation.set_parallel(true)
 	animation.tween_property(self, "global_position", player_pos, duration)
