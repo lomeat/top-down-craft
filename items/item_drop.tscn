@@ -3,13 +3,14 @@
 [ext_resource type="Script" path="res://items/item_drop.gd" id="1_rqpch"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_row2e"]
-radius = 16.0
+radius = 64.0
 
 [node name="ItemDrop" type="Area2D"]
+collision_layer = 2
 script = ExtResource("1_rqpch")
 
 [node name="Shadow" type="Sprite2D" parent="."]
-position = Vector2(4, 4)
+position = Vector2(4, 8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_row2e")

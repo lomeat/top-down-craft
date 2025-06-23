@@ -14,19 +14,23 @@ modulate = Color(1, 0.73, 0.73, 1)
 position = Vector2(1659, 368)
 rotation = 1.309
 scale = Vector2(5, 5)
+max_health = 1
 
 [node name="Bush2" parent="Objects" instance=ExtResource("3_37xdl")]
 position = Vector2(1526, 423)
 rotation = -1.309
 scale = Vector2(5, 5)
+max_health = 1
 
 [node name="Bush7" parent="Objects" instance=ExtResource("3_37xdl")]
 position = Vector2(1490, 343)
 scale = Vector2(5, 5)
+max_health = 1
 
 [node name="Bush8" parent="Objects" instance=ExtResource("3_37xdl")]
 position = Vector2(1606, 175)
 scale = Vector2(5, 5)
+max_health = 1
 
 [node name="Bush9" parent="Objects" instance=ExtResource("3_37xdl")]
 position = Vector2(1160, 811)
@@ -35,6 +39,7 @@ scale = Vector2(5, 5)
 [node name="Bush3" parent="Objects" instance=ExtResource("3_37xdl")]
 position = Vector2(1686, 475)
 scale = Vector2(5, 5)
+max_health = 1
 
 [node name="Bush4" parent="Objects" instance=ExtResource("3_37xdl")]
 position = Vector2(1074, 747)

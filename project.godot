@@ -24,7 +24,6 @@ GlobalSignals="*res://global_signals.gd"
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/resizable=false
-window/stretch/scale=0.5
 window/main_scene="res://level/level.tscn"
 
 [global_group]
