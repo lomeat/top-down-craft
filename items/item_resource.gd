@@ -1,4 +1,4 @@
-class_name ItemCraftResource
+class_name ItemResource
 extends Resource
 
 @export var id: String = ""

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ItemCraftResource" load_steps=3 format=3 uid="uid://dyi61cik1y0f1"]
+[gd_resource type="Resource" script_class="ItemResource" load_steps=3 format=3 uid="uid://dyi61cik1y0f1"]
 
 [ext_resource type="Script" path="res://items/item_resource.gd" id="1_806cc"]
 [ext_resource type="Texture2D" uid="uid://di271y5gvbcjn" path="res://items/crafts/seed.png" id="2_qtolu"]

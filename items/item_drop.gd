@@ -5,12 +5,12 @@ extends Area2D
 
 @export var animation_duration := 0.4
 
-var item_res: ItemCraftResource
+var item_res: ItemResource
 var count: int = 1
 var animation: Tween = create_tween()
 var can_picked_up := false
 
-func setup(res: ItemCraftResource, total: int):
+func setup(res: ItemResource, total: int):
 	if not res or not res.texture:
 		push_error("ItemResource is null!")
 		return

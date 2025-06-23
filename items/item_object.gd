@@ -41,7 +41,7 @@ func drop_loot():
 				spawn_item(entry.item, drop_count)
 			
 
-func spawn_item(item_res: ItemCraftResource, total: int):
+func spawn_item(item_res: ItemResource, total: int):
 	var item = preload("res://items/item_drop.tscn").instantiate()
 	var spread_radius := 128.0
 	var rand_int = randf_range(2, total)

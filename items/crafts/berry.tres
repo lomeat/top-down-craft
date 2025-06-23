@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ItemCraftResource" load_steps=3 format=3 uid="uid://beswl18sf6mlk"]
+[gd_resource type="Resource" script_class="ItemResource" load_steps=3 format=3 uid="uid://beswl18sf6mlk"]
 
 [ext_resource type="Script" path="res://items/item_resource.gd" id="1_cvaq4"]
 [ext_resource type="Texture2D" uid="uid://dyr4s3mte2tga" path="res://items/crafts/berry.png" id="2_yxp83"]
