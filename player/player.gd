@@ -6,6 +6,7 @@ extends CharacterBody2D
 @onready var sword_anim := $Sword/AnimationPlayer
 
 signal sword_attacked(target: Node2D, _damage: int)
+signal pickup_requested()
 
 @export var speed := 1000
 @export var acceleration := 40
@@ -20,6 +21,10 @@ var current_velocity := Vector2.ZERO
 var is_attacking := false
 var attack_cooldown := 0.3
 var cooldown_timer := 0.0
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("interact"):
+		pickup_requested.emit()
 
 func _physics_process(delta: float) -> void:
 	get_direction()
@@ -73,13 +78,8 @@ func attack(delta: float) -> void:
 		
 
 func _on_sword_area_body_entered(body: Node2D) -> void:
-	# print("Sword area target name: ", body.name)
 	if is_attacking:
 		sword_attacked.emit(body, damage)
 
 
-# func _on_pick_up_area_body_entered(_body: Node2D) -> void:
-# 	var bodies = pick_up_area.get_overlapping_bodies()
-# 	can_collected.emit(bodies)
-		
 
