@@ -7,7 +7,6 @@ extends Area2D
 
 var item_res: ItemCraftResource
 var count: int = 1
-var can_picked_up := false
 
 func setup(res: ItemCraftResource, total: int):
 	if not res or not res.texture:
@@ -34,8 +33,7 @@ func setup(res: ItemCraftResource, total: int):
 	
 func _ready() -> void:
 	await get_tree().create_timer(0.5).timeout
-	can_picked_up = true
-
+	GlobalSignals.item_ready_pickup.emit(self)
 	
 func destroy():
 	await collect_animation(animation_duration)
@@ -50,6 +48,3 @@ func collect_animation(duration: float) -> void:
 	tween.tween_property(self, "modulate:a", 0.0, duration)
 	await tween.finished
 
-func _on_body_was_entered(body: Node2D) -> void:
-	if can_picked_up and body is Player:
-		GlobalSignals.item_ready_pickup.emit(self)
