@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemCraftResource" load_steps=3 format=3 uid="uid://bf66p3eqo7k37"]
+
+[ext_resource type="Script" path="res://items/item_resource.gd" id="1_6c2kk"]
+[ext_resource type="Texture2D" uid="uid://k2uhg5ru7tjk" path="res://items/crafts/wood.png" id="2_7k67f"]
+
+[resource]
+script = ExtResource("1_6c2kk")
+id = "wood"
+name = "Just a Wood"
+texture = ExtResource("2_7k67f")

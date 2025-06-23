@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnjadvyibxrd1"]
+
+[ext_resource type="Script" path="res://items/item_drop.gd" id="1_rqpch"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_row2e"]
+radius = 16.0
+
+[node name="ItemDrop" type="Area2D"]
+script = ExtResource("1_rqpch")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(4, 4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_row2e")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

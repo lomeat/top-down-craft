@@ -1,13 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://lk85nur55q0a"]
+[gd_scene load_steps=5 format=3 uid="uid://c7bghsuyjo7h4"]
 
-[ext_resource type="Script" path="res://items/item.gd" id="1_vujf6"]
+[ext_resource type="Script" path="res://items/item_object.gd" id="1_y3hjm"]
 [ext_resource type="Texture2D" uid="uid://decrrp08xj1dy" path="res://items/objects/bush.png" id="2_32k4m"]
+[ext_resource type="Resource" uid="uid://cv4m57ide3fcy" path="res://items/objects/bush_loot_table.tres" id="2_bxjqm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7o87p"]
 size = Vector2(32, 32)
 
 [node name="Bush" type="StaticBody2D" groups=["item"]]
-script = ExtResource("1_vujf6")
+script = ExtResource("1_y3hjm")
+loot_table = ExtResource("2_bxjqm")
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
