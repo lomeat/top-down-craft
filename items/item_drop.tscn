@@ -5,7 +5,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_row2e"]
 radius = 64.0
 
-[node name="ItemDrop" type="Area2D"]
+[node name="ItemDrop" type="Area2D" groups=["item_drop"]]
 collision_layer = 2
 script = ExtResource("1_rqpch")
 
@@ -16,5 +16,3 @@ position = Vector2(4, 8)
 shape = SubResource("CircleShape2D_row2e")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-
-[connection signal="body_entered" from="." to="." method="_on_body_was_entered"]

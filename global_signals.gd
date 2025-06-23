@@ -10,3 +10,11 @@ func _ready() -> void:
 func remove_vscode_warnings():
 	item_ready_pickup.emit()
 	item_collected.emit()
+
+# --- Scene actions ---
+
+func _input(event: InputEvent) -> void:
+	if (event.is_action_pressed("restart")):
+		get_tree().reload_current_scene()
+	if (event.is_action_pressed("ui_cancel")):
+		get_tree().quit()

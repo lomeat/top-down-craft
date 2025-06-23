@@ -22,9 +22,14 @@ var is_attacking := false
 var attack_cooldown := 0.3
 var cooldown_timer := 0.0
 
+# Loot
+var isAutoloot := false
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact"):
 		pickup_requested.emit()
+	if event.is_action_pressed("toggle_autoloot"):
+		isAutoloot = !isAutoloot
 
 func _physics_process(delta: float) -> void:
 	get_direction()
@@ -80,6 +85,3 @@ func attack(delta: float) -> void:
 func _on_sword_area_body_entered(body: Node2D) -> void:
 	if is_attacking:
 		sword_attacked.emit(body, damage)
-
-
-
