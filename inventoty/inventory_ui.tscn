@@ -1,0 +1,56 @@
+[gd_scene load_steps=3 format=3 uid="uid://8u7wurf52mf8"]
+
+[ext_resource type="Script" path="res://inventoty/inventory_ui.gd" id="1_yvxun"]
+[ext_resource type="PackedScene" uid="uid://cm2rftdr6i3u8" path="res://inventoty/inventory_slot.tscn" id="2_5ltav"]
+
+[node name="InventoryUI" type="CanvasLayer"]
+scale = Vector2(2, 2)
+transform = Transform2D(2, 0, 0, 2, 0, 0)
+script = ExtResource("1_yvxun")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 336.0
+offset_bottom = 166.0
+
+[node name="GridContainer" type="GridContainer" parent="Panel"]
+layout_mode = 1
+offset_right = 280.0
+offset_bottom = 140.0
+columns = 4
+
+[node name="InventorySlot" parent="Panel/GridContainer" instance=ExtResource("2_5ltav")]
+layout_mode = 2
+
+[node name="InventorySlot2" parent="Panel/GridContainer" instance=ExtResource("2_5ltav")]
+layout_mode = 2
+
+[node name="InventorySlot3" parent="Panel/GridContainer" instance=ExtResource("2_5ltav")]
+layout_mode = 2
+
+[node name="InventorySlot4" parent="Panel/GridContainer" instance=ExtResource("2_5ltav")]
+layout_mode = 2
+
+[node name="InventorySlot5" parent="Panel/GridContainer" instance=ExtResource("2_5ltav")]
+layout_mode = 2
+
+[node name="InventorySlot6" parent="Panel/GridContainer" instance=ExtResource("2_5ltav")]
+layout_mode = 2
+
+[node name="InventorySlot7" parent="Panel/GridContainer" instance=ExtResource("2_5ltav")]
+layout_mode = 2
+
+[node name="InventorySlot8" parent="Panel/GridContainer" instance=ExtResource("2_5ltav")]
+layout_mode = 2
+
+[node name="CloseButton" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -35.0
+offset_right = -5.0
+offset_bottom = 31.0
+grow_horizontal = 0
+text = "X"

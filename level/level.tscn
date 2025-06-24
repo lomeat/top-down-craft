@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c3c56kupjcxgx"]
+[gd_scene load_steps=6 format=3 uid="uid://c3c56kupjcxgx"]
 
 [ext_resource type="PackedScene" uid="uid://b70mk50ktimrw" path="res://player/player.tscn" id="1_32yuu"]
 [ext_resource type="Script" path="res://level/game_controller.gd" id="1_f2i2t"]
+[ext_resource type="PackedScene" uid="uid://8u7wurf52mf8" path="res://inventoty/inventory_ui.tscn" id="2_q0b1n"]
 [ext_resource type="PackedScene" uid="uid://c7bghsuyjo7h4" path="res://items/objects/bush.tscn" id="3_37xdl"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fh02q"]
@@ -10,17 +11,20 @@ font_size = 40
 [node name="Level" type="Node2D"]
 script = ExtResource("1_f2i2t")
 
+[node name="InventoryUI" parent="." instance=ExtResource("2_q0b1n")]
+
 [node name="Label" type="Label" parent="."]
 offset_left = 1410.0
 offset_top = 707.0
 offset_right = 1797.0
 offset_bottom = 994.0
 text = "WASD - movement
-Mouse - fight angle
+R - restart
 LMB - attack
 E - pick up items
 Q - toggle autoloot"
 label_settings = SubResource("LabelSettings_fh02q")
+metadata/_edit_use_anchors_ = true
 
 [node name="Objects" type="Node2D" parent="."]
 

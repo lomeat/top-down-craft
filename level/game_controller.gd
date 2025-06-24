@@ -16,7 +16,7 @@ func _ready() -> void:
 	player_pickup_area.area_entered.connect(_ready_item)
 	player_pickup_area.area_exited.connect(_unready_item)
 
-	GlobalSignals.item_collected.connect(add_to_inventory)
+	GlobalSignals.item_collected.connect(InventoryData.add_item)
 	GlobalSignals.item_ready_pickup.connect(_check_items_collisions)
 
 func _check_items_collisions(item: ItemDrop):
@@ -55,26 +55,8 @@ func pickup_items():
 
 func collect_item(item: ItemDrop):
 	await item.destroy()
-	GlobalSignals.item_collected.emit(item)
+	GlobalSignals.item_collected.emit(item.item_res, 1)
 
 
-func add_to_inventory(item: ItemDrop):
-	if not item or not item.item_res:
-		push_error("Invalid item in add_to_inventory")
 
-	var id = item.item_res.id
-	var item_name = item.item_res.name
-	var count = item.count
-	
-	if inventory.has(item.item_res.id):
-		inventory[id].count += count
-	else:
-		inventory[id] = { "name": item_name, "count": count }
-	
-	print("To inventory was added: ", item.item_res.name)
-	update_inventory_ui()
 
-func update_inventory_ui():
-	print("Current inventory:")
-	for id in inventory:
-		print(" - ", inventory[id].name, ": ", inventory[id].count)

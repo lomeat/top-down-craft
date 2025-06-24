@@ -7,4 +7,7 @@
 script = ExtResource("1_cvaq4")
 id = "berry"
 name = "Blueberry"
+category = "material"
+max_stack = 99
+desc = "Some berries from a bush"
 texture = ExtResource("2_yxp83")

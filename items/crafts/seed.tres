@@ -7,4 +7,7 @@
 script = ExtResource("1_806cc")
 id = "seed"
 name = "Bush Seed"
+category = "seed"
+max_stack = 99
+desc = "Plant a seed to grow up a bush"
 texture = ExtResource("2_qtolu")

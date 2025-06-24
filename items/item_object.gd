@@ -4,7 +4,7 @@ extends StaticBody2D
 @onready var sprite := $Sprite2D
 
 @export var loot_table: LootTable
-@export var max_health := 1
+@export var max_health := 2
 
 var current_health = max_health
 var rng := RandomNumberGenerator.new()
