@@ -9,20 +9,23 @@
 bg_color = Color(0.701961, 0.529412, 0.309804, 1)
 
 [node name="InventoryUI" type="CanvasLayer"]
+layer = 3
 scale = Vector2(2, 2)
 transform = Transform2D(2, 0, 0, 2, 0, 0)
 script = ExtResource("1_yvxun")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="UIRoot" type="Node2D" parent="."]
+
+[node name="Panel" type="Panel" parent="UIRoot"]
 offset_left = 16.0
 offset_top = 16.0
 offset_right = 576.0
 offset_bottom = 308.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_kbnks")
 
-[node name="Background" type="Node2D" parent="Panel"]
+[node name="Background" type="Node2D" parent="UIRoot/Panel"]
 
-[node name="C_TR" type="TextureRect" parent="Panel/Background"]
+[node name="C_TR" type="TextureRect" parent="UIRoot/Panel/Background"]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -33,7 +36,7 @@ grow_horizontal = 0
 pivot_offset = Vector2(64, 0)
 texture = ExtResource("3_xkth2")
 
-[node name="C_BR" type="TextureRect" parent="Panel/Background"]
+[node name="C_BR" type="TextureRect" parent="UIRoot/Panel/Background"]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -48,7 +51,7 @@ grow_vertical = 0
 rotation = 1.5708
 texture = ExtResource("3_xkth2")
 
-[node name="C_BL" type="TextureRect" parent="Panel/Background"]
+[node name="C_BL" type="TextureRect" parent="UIRoot/Panel/Background"]
 anchors_preset = -1
 anchor_left = 0.00081159
 anchor_top = 1.0
@@ -64,7 +67,7 @@ pivot_offset = Vector2(64, 0)
 texture = ExtResource("3_xkth2")
 metadata/_edit_use_anchors_ = true
 
-[node name="P_B" type="TextureRect" parent="Panel/Background"]
+[node name="P_B" type="TextureRect" parent="UIRoot/Panel/Background"]
 self_modulate = Color(0.83, 0.735933, 0.5478, 1)
 offset_left = 64.0
 offset_top = 228.0
@@ -72,7 +75,7 @@ offset_right = 496.0
 offset_bottom = 292.0
 texture = ExtResource("4_08e6w")
 
-[node name="P_T" type="TextureRect" parent="Panel/Background"]
+[node name="P_T" type="TextureRect" parent="UIRoot/Panel/Background"]
 self_modulate = Color(0.83, 0.735933, 0.5478, 1)
 offset_left = 496.0
 offset_top = 64.0
@@ -81,7 +84,7 @@ offset_bottom = 128.0
 rotation = 3.14159
 texture = ExtResource("4_08e6w")
 
-[node name="P_L" type="TextureRect" parent="Panel/Background"]
+[node name="P_L" type="TextureRect" parent="UIRoot/Panel/Background"]
 self_modulate = Color(0.83, 0.735933, 0.5478, 1)
 offset_left = 64.0
 offset_top = 64.0
@@ -90,7 +93,7 @@ offset_bottom = 128.0
 rotation = 1.5708
 texture = ExtResource("4_08e6w")
 
-[node name="P_R" type="TextureRect" parent="Panel/Background"]
+[node name="P_R" type="TextureRect" parent="UIRoot/Panel/Background"]
 self_modulate = Color(0.83, 0.735933, 0.5478, 1)
 offset_left = 496.0
 offset_top = 228.0
@@ -99,7 +102,7 @@ offset_bottom = 292.0
 rotation = -1.5708
 texture = ExtResource("4_08e6w")
 
-[node name="C_TL" type="TextureRect" parent="Panel/Background"]
+[node name="C_TL" type="TextureRect" parent="UIRoot/Panel/Background"]
 anchors_preset = -1
 anchor_left = 0.00357143
 anchor_right = 0.00357143
@@ -109,7 +112,7 @@ rotation = -1.5708
 pivot_offset = Vector2(64, 0)
 texture = ExtResource("3_xkth2")
 
-[node name="GridContainer" type="GridContainer" parent="Panel"]
+[node name="GridContainer" type="GridContainer" parent="UIRoot/Panel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -124,26 +127,26 @@ grow_horizontal = 2
 grow_vertical = 2
 columns = 4
 
-[node name="InventorySlot" parent="Panel/GridContainer" instance=ExtResource("2_5ltav")]
+[node name="InventorySlot" parent="UIRoot/Panel/GridContainer" instance=ExtResource("2_5ltav")]
 layout_mode = 2
 
-[node name="InventorySlot2" parent="Panel/GridContainer" instance=ExtResource("2_5ltav")]
+[node name="InventorySlot2" parent="UIRoot/Panel/GridContainer" instance=ExtResource("2_5ltav")]
 layout_mode = 2
 
-[node name="InventorySlot3" parent="Panel/GridContainer" instance=ExtResource("2_5ltav")]
+[node name="InventorySlot3" parent="UIRoot/Panel/GridContainer" instance=ExtResource("2_5ltav")]
 layout_mode = 2
 
-[node name="InventorySlot4" parent="Panel/GridContainer" instance=ExtResource("2_5ltav")]
+[node name="InventorySlot4" parent="UIRoot/Panel/GridContainer" instance=ExtResource("2_5ltav")]
 layout_mode = 2
 
-[node name="InventorySlot5" parent="Panel/GridContainer" instance=ExtResource("2_5ltav")]
+[node name="InventorySlot5" parent="UIRoot/Panel/GridContainer" instance=ExtResource("2_5ltav")]
 layout_mode = 2
 
-[node name="InventorySlot6" parent="Panel/GridContainer" instance=ExtResource("2_5ltav")]
+[node name="InventorySlot6" parent="UIRoot/Panel/GridContainer" instance=ExtResource("2_5ltav")]
 layout_mode = 2
 
-[node name="InventorySlot7" parent="Panel/GridContainer" instance=ExtResource("2_5ltav")]
+[node name="InventorySlot7" parent="UIRoot/Panel/GridContainer" instance=ExtResource("2_5ltav")]
 layout_mode = 2
 
-[node name="InventorySlot8" parent="Panel/GridContainer" instance=ExtResource("2_5ltav")]
+[node name="InventorySlot8" parent="UIRoot/Panel/GridContainer" instance=ExtResource("2_5ltav")]
 layout_mode = 2

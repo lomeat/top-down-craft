@@ -1,8 +1,10 @@
 extends CanvasLayer
 
-@onready var grid := $Panel/GridContainer
+@onready var grid := $UIRoot/Panel/GridContainer
+@onready var root := $UIRoot
 
 var slots: Array = []
+var anim: Tween
 
 func _ready() -> void:
 	visible = false
@@ -10,7 +12,16 @@ func _ready() -> void:
 	InventoryData.inventory_updated.connect(update_ui)
 
 func toggle(isOn: bool = false):
-	visible = isOn || !visible
+	if visible and not isOn:
+		anim = create_tween()
+		anim.tween_property(root, "modulate:a", 0, 0.2).set_ease(Tween.EASE_IN)
+		await anim.finished
+		visible = isOn || !visible
+	else:
+		visible = isOn || !visible
+		anim = create_tween()
+		anim.tween_property(root, "modulate:a", 1, 0.2).set_ease(Tween.EASE_IN)
+		
 
 func update_ui(inventory: Dictionary):
 	for slot in slots:
