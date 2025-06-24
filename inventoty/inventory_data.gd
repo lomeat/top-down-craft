@@ -32,7 +32,10 @@ func get_items() -> Dictionary:
 	return inventory
 
 func get_item(id: String) -> Dictionary:
-	return inventory[id]
+	return inventory[id] if inventory.has(id) else {}
+
+func check_item(id: String) -> bool:
+	return inventory.has(id)
 
 func clear():
 	inventory = {}

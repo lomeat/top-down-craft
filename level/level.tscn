@@ -1,17 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://c3c56kupjcxgx"]
+[gd_scene load_steps=7 format=3 uid="uid://c3c56kupjcxgx"]
 
 [ext_resource type="PackedScene" uid="uid://b70mk50ktimrw" path="res://player/player.tscn" id="1_32yuu"]
 [ext_resource type="Script" path="res://level/game_controller.gd" id="1_f2i2t"]
 [ext_resource type="PackedScene" uid="uid://8u7wurf52mf8" path="res://inventoty/inventory_ui.tscn" id="2_q0b1n"]
 [ext_resource type="PackedScene" uid="uid://c7bghsuyjo7h4" path="res://items/objects/bush.tscn" id="3_37xdl"]
+[ext_resource type="FontFile" uid="uid://b3l1vf8q6clbj" path="res://fonts/BlockBlueprint.ttf" id="3_a2yr7"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fh02q"]
+font = ExtResource("3_a2yr7")
 font_size = 40
+font_color = Color(1, 1, 1, 0.462745)
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_f2i2t")
 
 [node name="InventoryUI" parent="." instance=ExtResource("2_q0b1n")]
+scale = Vector2(1, 1)
+transform = Transform2D(1, 0, 0, 1, 0, 0)
 
 [node name="Label" type="Label" parent="."]
 offset_left = 1410.0
@@ -22,7 +27,8 @@ text = "WASD - movement
 R - restart
 LMB - attack
 E - pick up items
-Q - toggle autoloot"
+Q - toggle autoloot
+Tab - inventory"
 label_settings = SubResource("LabelSettings_fh02q")
 metadata/_edit_use_anchors_ = true
 
