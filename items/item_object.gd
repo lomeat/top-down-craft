@@ -44,11 +44,11 @@ func drop_loot():
 func spawn_item(item_res: ItemResource, total: int):
 	var item = preload("res://items/item_drop.tscn").instantiate()
 	var spread_radius := 128.0
-	var rand_int = randf_range(2, total)
-	var angle := rng.randf_range(0, TAU)
+	var rand_int = randf_range(1, total)
+	var angle := rng.randf_range(1, TAU)
 	var offset := Vector2(
-		cos(angle) * spread_radius / 2 * sqrt(float(rand_int) / 5), 
-		sin(angle) * spread_radius * sqrt(float(rand_int) / 5)
+		cos(angle) * spread_radius / 2 * sqrt(float(rand_int) / total), 
+		sin(angle) * spread_radius * sqrt(float(rand_int) / total)
 	)
 
 	item.setup(item_res, 1)

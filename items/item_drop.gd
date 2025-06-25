@@ -71,7 +71,7 @@ func animate_ready_pick_up():
 	animation = create_tween()
 	animation.set_parallel(true) 
 	animation.tween_property(new_sprite.material, "shader_parameter/outline_width", 4.0, 0.2).set_ease(Tween.EASE_IN)
-	animation.tween_property(new_sprite.material, "shader_parameter/outline_color", Color(1, 1, 1, 0.4), 0.2).set_ease(Tween.EASE_IN)
+	animation.tween_property(new_sprite.material, "shader_parameter/outline_color", Color(1, 1, 1, 0.5), 0.2).set_ease(Tween.EASE_IN)
 	
 func animate_idle():
 	animation = create_tween()
@@ -80,6 +80,7 @@ func animate_idle():
 	animation.tween_property(new_sprite.material, "shader_parameter/outline_color", Color(1, 1, 1, 0), 0.2).set_ease(Tween.EASE_IN)
 
 func animate_collect(duration: float) -> void:
+	animate_idle()
 	var player_pos = get_tree().get_first_node_in_group("player").global_position
 	animation = create_tween()
 	animation.set_parallel(true)
