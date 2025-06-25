@@ -9,7 +9,7 @@
 [sub_resource type="LabelSettings" id="LabelSettings_fh02q"]
 font = ExtResource("3_a2yr7")
 font_size = 40
-font_color = Color(1, 1, 1, 0.462745)
+font_color = Color(1, 1, 1, 0.4)
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_f2i2t")

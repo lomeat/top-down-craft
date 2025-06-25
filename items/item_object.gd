@@ -4,7 +4,7 @@ extends StaticBody2D
 @onready var sprite := $Sprite2D
 
 @export var loot_table: LootTable
-@export var max_health := 1
+@export var max_health := 2
 
 var current_health = max_health
 var rng := RandomNumberGenerator.new()
@@ -69,12 +69,15 @@ func spawn_animation(item: Node2D, target_position: Vector2):
 	tween.set_ease(Tween.EASE_OUT)
 	tween.set_trans(Tween.TRANS_BACK)
 
-	tween.tween_property(item, "global_position", target_position, 0.5)
-	item.modulate.a = 0.5
-	tween.tween_property(item, "modulate:a", 1, 0.3)
+	tween.tween_property(item, "global_position", target_position, 0.4)
+
+	if item.has_node("Sprite2D"):
+		var main_sprite = item.get_node("Sprite2D")
+		main_sprite.modulate.a = 0.5
+		tween.tween_property(main_sprite, "modulate:a", 1.0, 0.4)
 
 	if item.has_node("Shadow"):
 		var shadow = item.get_node("Shadow")
 		var original_a = shadow.modulate.a
 		shadow.modulate.a = 0.0
-		tween.tween_property(shadow, "modulate:a", original_a, 0.6)
+		tween.tween_property(shadow, "modulate:a", original_a, 0.3)

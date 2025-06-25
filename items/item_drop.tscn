@@ -15,5 +15,5 @@ position = Vector2(4, 8)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_row2e")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="MainSprite" type="Sprite2D" parent="."]
 region_rect = Rect2(0, -10.525, 128, 138.525)

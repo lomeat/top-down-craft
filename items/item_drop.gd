@@ -40,7 +40,7 @@ func _ready() -> void:
 	outline_material.set_shader_parameter("outline_color", Color(1,1,1,0))
 	new_sprite.material = outline_material
 	
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(0.3).timeout
 	can_picked_up = true
 	GlobalSignals.item_ready_pickup.emit(self)
 
@@ -80,7 +80,6 @@ func animate_idle():
 	animation.tween_property(new_sprite.material, "shader_parameter/outline_color", Color(1, 1, 1, 0), 0.2).set_ease(Tween.EASE_IN)
 
 func animate_collect(duration: float) -> void:
-	animate_idle()
 	var player_pos = get_tree().get_first_node_in_group("player").global_position
 	animation = create_tween()
 	animation.set_parallel(true)
