@@ -21,7 +21,7 @@ func add_item(item: ItemResource, count: int = 1):
 	inventory_updated.emit(inventory)
 
 
-func remove_item(id: String, count: int = 1):
+func remove_item(id: String, count: int = 1) -> void:
 	if inventory.has(id):
 		inventory[id].count -= count
 		if inventory[id].count <= 0:
@@ -31,18 +31,36 @@ func remove_item(id: String, count: int = 1):
 func get_items() -> Dictionary:
 	return inventory
 
+func get_all_items() -> Array[Dictionary]:
+	return inventory.values()
+
 func get_item(id: String) -> Dictionary:
-	return inventory[id] if inventory.has(id) else {}
+	if check_item(id):
+		return inventory.get(id)
+	else:
+		return {}
+
+func get_item_count(id: String) -> int:
+	if check_item(id):
+		return inventory[id].count
+	else:
+		return 0
 
 func check_item(id: String) -> bool:
-	return inventory.has(id)
+	if inventory.has(id):
+		return true
+	else:
+		print("Inventory has not: ", id)
+		return false
 
 func clear():
-	inventory = {}
+	inventory.clear()
 
 # --- Utils ---
 
 func check_max_stack(id: String, res: ItemResource):
+	if not check_item(id) or not res: return
+	
 	if inventory[id].count > res.max_stack:
 		var rest = inventory[id].count - res.max_stack
 		inventory[id].count = res.max_stack
