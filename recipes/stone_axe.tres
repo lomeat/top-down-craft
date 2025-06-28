@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="RecipeRes" load_steps=8 format=3 uid="uid://bcmhyuv21jap4"]
+
+[ext_resource type="Script" path="res://recipes/res_recipe_ingredient.gd" id="1_2vbps"]
+[ext_resource type="Resource" uid="uid://bdmd7u3c55aej" path="res://items/materials/rock.tres" id="2_vbqgw"]
+[ext_resource type="Script" path="res://recipes/res_recipe.gd" id="2_wa4j3"]
+[ext_resource type="Resource" uid="uid://bf66p3eqo7k37" path="res://items/materials/wood.tres" id="3_47kn1"]
+[ext_resource type="Resource" uid="uid://b5mgpabbqfhyi" path="res://items/tools/stone_axe.tres" id="4_bbb20"]
+
+[sub_resource type="Resource" id="Resource_8q6dd"]
+script = ExtResource("1_2vbps")
+item = ExtResource("2_vbqgw")
+count = 3
+
+[sub_resource type="Resource" id="Resource_58y80"]
+script = ExtResource("1_2vbps")
+item = ExtResource("3_47kn1")
+count = 2
+
+[resource]
+script = ExtResource("2_wa4j3")
+id = "stone_axe"
+name = "Stone Axe"
+result = ExtResource("4_bbb20")
+result_count = 1
+ingredients = Array[ExtResource("1_2vbps")]([SubResource("Resource_8q6dd"), SubResource("Resource_58y80")])

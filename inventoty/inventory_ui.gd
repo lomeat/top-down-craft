@@ -1,3 +1,4 @@
+class_name InventoryUI
 extends CanvasLayer
 
 @onready var grid := $UIRoot/Panel/GridContainer
@@ -8,7 +9,7 @@ var anim: Tween
 
 func _ready() -> void:
 	visible = false
-	slots = grid.get_children().filter(func (child): return child is InventorySlot)
+	slots = grid.get_children().filter(func (child): return child is InventorySlotUI)
 	InventoryData.inventory_updated.connect(update_ui)
 
 func toggle(isOn: bool = false):

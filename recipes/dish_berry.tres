@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="RecipeRes" load_steps=6 format=3 uid="uid://dicf2w7k0tfhl"]
+
+[ext_resource type="Script" path="res://recipes/res_recipe_ingredient.gd" id="1_i84du"]
+[ext_resource type="Resource" uid="uid://beswl18sf6mlk" path="res://items/consumes/berry.tres" id="2_27qba"]
+[ext_resource type="Script" path="res://recipes/res_recipe.gd" id="2_cd71g"]
+[ext_resource type="Resource" uid="uid://baa37fh06aa4j" path="res://items/consumes/dish_berry.tres" id="3_4fp73"]
+
+[sub_resource type="Resource" id="Resource_1fnir"]
+script = ExtResource("1_i84du")
+item = ExtResource("2_27qba")
+count = 2
+
+[resource]
+script = ExtResource("2_cd71g")
+id = "dish_berry"
+name = "Dish of Berry"
+result = ExtResource("3_4fp73")
+result_count = 1
+ingredients = Array[ExtResource("1_i84du")]([SubResource("Resource_1fnir")])

@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=3 uid="uid://b0wjpn314kloo"]
+
+[ext_resource type="Script" path="res://recipes/craft_slot_ui.gd" id="1_ukmys"]
+[ext_resource type="Texture2D" uid="uid://c44ll2834k7tr" path="res://items/materials/stone_wall.png" id="2_5natp"]
+[ext_resource type="FontFile" uid="uid://cb1ausronpawj" path="res://fonts/ByteBounce.ttf" id="4_m2pu0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hj5nx"]
+font = ExtResource("4_m2pu0")
+font_size = 48
+
+[node name="CraftSlot" type="Control"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 80.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 2
+script = ExtResource("1_ukmys")
+
+[node name="RecipeContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(300, 80)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 30.0
+grow_horizontal = 2
+theme_override_constants/separation = 32
+
+[node name="ResultIcon" type="TextureRect" parent="RecipeContainer"]
+layout_mode = 2
+texture = ExtResource("2_5natp")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="ResultName" type="Label" parent="RecipeContainer"]
+layout_mode = 2
+text = "Stone Wall"
+label_settings = SubResource("LabelSettings_hj5nx")
+
+[node name="IngredientsContainer" type="HBoxContainer" parent="RecipeContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+
+[node name="CraftButton" type="Button" parent="RecipeContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("4_m2pu0")
+theme_override_font_sizes/font_size = 48
+text = "Craft"

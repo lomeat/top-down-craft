@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="MaterialItemRes" load_steps=3 format=3 uid="uid://bf66p3eqo7k37"]
+
+[ext_resource type="Script" path="res://items/res_item_material.gd" id="1_yebcs"]
+[ext_resource type="Texture2D" uid="uid://ca1mlo0egn1nc" path="res://items/materials/wood.png" id="2_2gisg"]
+
+[resource]
+script = ExtResource("1_yebcs")
+id = "wood"
+name = "Wood"
+texture = ExtResource("2_2gisg")
+category = "material"
+tags = Array[String]([])
+desc = "Just a piece of wood"
+max_stack = 99

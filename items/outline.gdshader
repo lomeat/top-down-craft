@@ -7,11 +7,9 @@ void fragment() {
     vec2 pixel_size = TEXTURE_PIXEL_SIZE;
     vec4 tex_color = texture(TEXTURE, UV);
     
-    // Проверяем соседние пиксели
     if (tex_color.a < 0.5) {
         float max_alpha = 0.0;
         
-        // Проверяем пиксели вокруг
         for (float x = -outline_width; x <= outline_width; x += 1.0) {
             for (float y = -outline_width; y <= outline_width; y += 1.0) {
                 if (x != 0.0 || y != 0.0) {
@@ -22,7 +20,6 @@ void fragment() {
             }
         }
         
-        // Если нашли непрозрачный пиксель рядом - рисуем контур
         if (max_alpha > 0.5) {
             COLOR = outline_color;
         } else {

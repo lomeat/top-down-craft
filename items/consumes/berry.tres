@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ConsumeItemRes" load_steps=3 format=3 uid="uid://beswl18sf6mlk"]
+
+[ext_resource type="Script" path="res://items/res_item_consume.gd" id="1_ss76n"]
+[ext_resource type="Texture2D" uid="uid://bcla4ooferumx" path="res://items/consumes/berry.png" id="2_yxp83"]
+
+[resource]
+script = ExtResource("1_ss76n")
+heal = 25
+cooldown = 0.0
+id = "berry"
+name = "Blueberry"
+texture = ExtResource("2_yxp83")
+category = "consume"
+tags = Array[String]([])
+desc = "Some berries"
+max_stack = 99

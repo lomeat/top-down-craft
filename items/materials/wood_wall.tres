@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="MaterialItemRes" load_steps=3 format=3 uid="uid://cdwqajps2hm2"]
+
+[ext_resource type="Script" path="res://items/res_item_material.gd" id="1_7tptp"]
+[ext_resource type="Texture2D" uid="uid://gjcvxfilf45g" path="res://items/materials/wood_wall.png" id="2_eq380"]
+
+[resource]
+script = ExtResource("1_7tptp")
+id = "wood_wall"
+name = "Wood Wall"
+texture = ExtResource("2_eq380")
+category = "material"
+tags = Array[String](["placeable"])
+desc = "Wood wall
+[WIP] Place where you want"
+max_stack = 99

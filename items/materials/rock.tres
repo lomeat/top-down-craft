@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="MaterialItemRes" load_steps=3 format=3 uid="uid://bdmd7u3c55aej"]
+
+[ext_resource type="Script" path="res://items/res_item_material.gd" id="1_o5gay"]
+[ext_resource type="Texture2D" uid="uid://b4nw42iif5rg5" path="res://items/materials/rock.png" id="2_deodg"]
+
+[resource]
+script = ExtResource("1_o5gay")
+id = "rock"
+name = "Rock"
+texture = ExtResource("2_deodg")
+category = "material"
+tags = Array[String]([])
+desc = "You know, one rock"
+max_stack = 99

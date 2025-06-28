@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://8u7wurf52mf8"]
 
 [ext_resource type="Script" path="res://inventoty/inventory_ui.gd" id="1_yvxun"]
-[ext_resource type="PackedScene" uid="uid://cm2rftdr6i3u8" path="res://inventoty/inventory_slot.tscn" id="2_5ltav"]
-[ext_resource type="Texture2D" uid="uid://1qa404uwraxk" path="res://inventoty/panel_corner.png" id="3_xkth2"]
-[ext_resource type="Texture2D" uid="uid://c57bnyj414qvm" path="res://inventoty/pane_border.png" id="4_08e6w"]
+[ext_resource type="PackedScene" uid="uid://cm2rftdr6i3u8" path="res://inventoty/inventory_slot_ui.tscn" id="2_5ltav"]
+[ext_resource type="Texture2D" uid="uid://y8oxvs0xwb4u" path="res://inventoty/assets/panel_corner.png" id="3_xkth2"]
+[ext_resource type="Texture2D" uid="uid://buhpvntxydpw5" path="res://inventoty/assets/pane_border.png" id="4_08e6w"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kbnks"]
 bg_color = Color(0.701961, 0.529412, 0.309804, 1)
@@ -127,26 +127,26 @@ grow_horizontal = 2
 grow_vertical = 2
 columns = 4
 
-[node name="InventorySlot" parent="UIRoot/Panel/GridContainer" instance=ExtResource("2_5ltav")]
+[node name="InventorySlotUI" parent="UIRoot/Panel/GridContainer" instance=ExtResource("2_5ltav")]
 layout_mode = 2
 
-[node name="InventorySlot2" parent="UIRoot/Panel/GridContainer" instance=ExtResource("2_5ltav")]
+[node name="InventorySlotUI2" parent="UIRoot/Panel/GridContainer" instance=ExtResource("2_5ltav")]
 layout_mode = 2
 
-[node name="InventorySlot3" parent="UIRoot/Panel/GridContainer" instance=ExtResource("2_5ltav")]
+[node name="InventorySlotUI3" parent="UIRoot/Panel/GridContainer" instance=ExtResource("2_5ltav")]
 layout_mode = 2
 
-[node name="InventorySlot4" parent="UIRoot/Panel/GridContainer" instance=ExtResource("2_5ltav")]
+[node name="InventorySlotUI4" parent="UIRoot/Panel/GridContainer" instance=ExtResource("2_5ltav")]
 layout_mode = 2
 
-[node name="InventorySlot5" parent="UIRoot/Panel/GridContainer" instance=ExtResource("2_5ltav")]
+[node name="InventorySlotUI5" parent="UIRoot/Panel/GridContainer" instance=ExtResource("2_5ltav")]
 layout_mode = 2
 
-[node name="InventorySlot6" parent="UIRoot/Panel/GridContainer" instance=ExtResource("2_5ltav")]
+[node name="InventorySlotUI6" parent="UIRoot/Panel/GridContainer" instance=ExtResource("2_5ltav")]
 layout_mode = 2
 
-[node name="InventorySlot7" parent="UIRoot/Panel/GridContainer" instance=ExtResource("2_5ltav")]
+[node name="InventorySlotUI7" parent="UIRoot/Panel/GridContainer" instance=ExtResource("2_5ltav")]
 layout_mode = 2
 
-[node name="InventorySlot8" parent="UIRoot/Panel/GridContainer" instance=ExtResource("2_5ltav")]
+[node name="InventorySlotUI8" parent="UIRoot/Panel/GridContainer" instance=ExtResource("2_5ltav")]
 layout_mode = 2

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ConsumeItemRes" load_steps=3 format=3 uid="uid://baa37fh06aa4j"]
+
+[ext_resource type="Script" path="res://items/res_item_consume.gd" id="1_cb2xt"]
+[ext_resource type="Texture2D" uid="uid://bvxxaao0f6g42" path="res://items/consumes/dish_berry.png" id="2_68qw4"]
+
+[resource]
+script = ExtResource("1_cb2xt")
+heal = 100
+cooldown = 0.0
+id = "dish_berry"
+name = "Dish of berries"
+texture = ExtResource("2_68qw4")
+category = "consume"
+tags = Array[String]([])
+desc = "Tastefull plate with berries"
+max_stack = 99

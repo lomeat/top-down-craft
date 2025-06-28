@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7bghsuyjo7h4"]
+
+[ext_resource type="Script" path="res://objects/object.gd" id="1_y3hjm"]
+[ext_resource type="Texture2D" uid="uid://csibltlkfquap" path="res://objects/bush.png" id="2_32k4m"]
+[ext_resource type="Resource" uid="uid://cv4m57ide3fcy" path="res://objects/bush.tres" id="2_bxjqm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7o87p"]
+size = Vector2(32, 32)
+
+[node name="Bush" type="StaticBody2D" groups=["item"]]
+script = ExtResource("1_y3hjm")
+loot_table = ExtResource("2_bxjqm")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_32k4m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_7o87p")

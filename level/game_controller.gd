@@ -19,18 +19,18 @@ func _ready() -> void:
 	GlobalSignals.item_collected.connect(InventoryData.add_item)
 	GlobalSignals.item_ready_pickup.connect(_check_items_collisions)
 
-func _check_items_collisions(item: ItemDrop):
+func _check_items_collisions(item: Item):
 	if player_pickup_area.overlaps_area(item):
 		_ready_item(item)
 
 func _ready_item(body: Area2D) -> void:
-	if body is ItemDrop:
+	if body is Item:
 		if body.can_picked_up:
 			pending_pickups.append(body)
 			body.run_animation("highlight")
 
 func _unready_item(body: Area2D) -> void:
-	if body is ItemDrop and pending_pickups.has(body):
+	if body is Item and pending_pickups.has(body):
 		pending_pickups.erase(body)
 		body.run_animation("idle")
 
@@ -53,7 +53,7 @@ func pickup_items():
 		if is_instance_valid(item):
 			collect_item(item)
 
-func collect_item(item: ItemDrop):
+func collect_item(item: Item):
 	await item.destroy()
 	GlobalSignals.item_collected.emit(item.item_res, 1)
 

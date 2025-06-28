@@ -17,10 +17,10 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-GlobalSignals="*res://global_signals.gd"
-ItemDB="*res://item_database.gd"
-InventoryData="*res://inventoty/inventory_data.gd"
-RecipeDB="*res://recipes/recipeDB.gd"
+GlobalSignals="*res://global/global_signals.gd"
+InventoryData="*res://global/inventory_data.gd"
+ItemDB="*res://global/item_db.gd"
+RecipeDB="*res://global/recipe_db.gd"
 
 [display]
 

@@ -19,7 +19,7 @@ func update_recipes():
 		child.queue_free()
 
 	for recipe in RecipeDB.get_all_recipes():
-		var recipe_ui = preload("res://recipes/craft_slot.tscn").instantiate()
+		var recipe_ui = preload("res://recipes/craft_slot_ui.tscn").instantiate()
 		list.add_child(recipe_ui)
 		recipe_ui.setup(recipe, craft_recipe) 
 		recipe_ui.update()

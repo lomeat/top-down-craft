@@ -1,0 +1,94 @@
+[gd_scene load_steps=6 format=3 uid="uid://cm2rftdr6i3u8"]
+
+[ext_resource type="Script" path="res://inventoty/inventory_slot_ui.gd" id="1_w60wd"]
+[ext_resource type="Texture2D" uid="uid://ih2hkvgv4dqc" path="res://inventoty/assets/inventory_slot.png" id="2_s4n87"]
+[ext_resource type="Texture2D" uid="uid://bh4k8x5tlh5uy" path="res://inventoty/assets/circle.png" id="3_4bbm4"]
+[ext_resource type="FontFile" uid="uid://cb1ausronpawj" path="res://fonts/ByteBounce.ttf" id="4_gqvca"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_cyoyo"]
+font = ExtResource("4_gqvca")
+font_size = 64
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(2, 2)
+
+[node name="InventorySlotUI" type="Control"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+script = ExtResource("1_w60wd")
+
+[node name="BackgroundTexture" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_s4n87")
+expand_mode = 2
+
+[node name="BackIcon" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.3)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_4bbm4")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="ItemIcon" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -48.0
+offset_right = 48.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(48, 48)
+expand_mode = 2
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="CountLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -57.0
+offset_top = -60.0
+offset_right = -17.0
+offset_bottom = -15.0
+grow_horizontal = 0
+grow_vertical = 0
+label_settings = SubResource("LabelSettings_cyoyo")
+horizontal_alignment = 2
+vertical_alignment = 2

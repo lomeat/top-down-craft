@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="RecipeRes" load_steps=6 format=3 uid="uid://oc08f32ly560"]
+
+[ext_resource type="Script" path="res://recipes/res_recipe_ingredient.gd" id="1_dyrsk"]
+[ext_resource type="Resource" uid="uid://bf66p3eqo7k37" path="res://items/materials/wood.tres" id="2_06xnc"]
+[ext_resource type="Script" path="res://recipes/res_recipe.gd" id="2_escbb"]
+[ext_resource type="Resource" uid="uid://cdwqajps2hm2" path="res://items/materials/wood_wall.tres" id="3_hjvt5"]
+
+[sub_resource type="Resource" id="Resource_q6u7p"]
+script = ExtResource("1_dyrsk")
+item = ExtResource("2_06xnc")
+count = 4
+
+[resource]
+script = ExtResource("2_escbb")
+id = "wood_wall"
+name = "Wood Wall"
+result = ExtResource("3_hjvt5")
+result_count = 1
+ingredients = Array[ExtResource("1_dyrsk")]([SubResource("Resource_q6u7p")])

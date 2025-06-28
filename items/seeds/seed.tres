@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SeedItemRes" load_steps=3 format=3 uid="uid://dyi61cik1y0f1"]
+
+[ext_resource type="Script" path="res://items/res_item_seed.gd" id="1_agdob"]
+[ext_resource type="Texture2D" uid="uid://f7vfihcerhol" path="res://items/seeds/seed.png" id="2_p7pf4"]
+
+[resource]
+script = ExtResource("1_agdob")
+plant_id = "bush"
+grow_time = 10000.0
+id = "bush_seed"
+name = "Bush Seed"
+texture = ExtResource("2_p7pf4")
+category = "seed"
+tags = Array[String](["placeable"])
+desc = "[WIP] Plant anywhere to see a bush in 10s"
+max_stack = 99

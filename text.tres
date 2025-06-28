@@ -1,7 +1,0 @@
-[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://h6nkuykwe1u3"]
-
-[ext_resource type="FontFile" uid="uid://b3l1vf8q6clbj" path="res://fonts/BlockBlueprint.ttf" id="1_xtc8j"]
-
-[resource]
-font = ExtResource("1_xtc8j")
-font_size = 32
