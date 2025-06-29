@@ -13,4 +13,3 @@ texture = ExtResource("2_p7pf4")
 category = "seed"
 tags = Array[String](["placeable"])
 desc = "[WIP] Plant anywhere to see a bush in 10s"
-max_stack = 99

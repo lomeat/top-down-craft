@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://ivlt4o6cw3pi"]
+
+[ext_resource type="Script" path="res://items/item_tooltip.gd" id="1_1k01w"]
+[ext_resource type="FontFile" uid="uid://b3l1vf8q6clbj" path="res://fonts/BlockBlueprint.ttf" id="2_qn3m7"]
+[ext_resource type="FontFile" uid="uid://cpmlevq25eg80" path="res://fonts/MedodicaRegular.otf" id="3_5e4q1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qu8mu"]
+bg_color = Color(0, 0, 0, 0.8)
+
+[sub_resource type="LabelSettings" id="LabelSettings_g1km2"]
+font = ExtResource("2_qn3m7")
+font_size = 48
+
+[sub_resource type="LabelSettings" id="LabelSettings_sehws"]
+font = ExtResource("3_5e4q1")
+font_size = 48
+font_color = Color(0.63, 0.63, 0.63, 1)
+
+[node name="ItemTooltip" type="CanvasLayer"]
+layer = 100
+script = ExtResource("1_1k01w")
+
+[node name="UIRoot" type="Node2D" parent="."]
+
+[node name="PanelContainer" type="PanelContainer" parent="UIRoot"]
+custom_minimum_size = Vector2(500, 10)
+offset_right = 500.0
+offset_bottom = 302.0
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_qu8mu")
+
+[node name="MarginContainer" type="MarginContainer" parent="UIRoot/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UIRoot/PanelContainer/MarginContainer"]
+custom_minimum_size = Vector2(100, 10)
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Name" type="Label" parent="UIRoot/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Просто кусок дерева, че ты хочешь"
+label_settings = SubResource("LabelSettings_g1km2")
+autowrap_mode = 2
+
+[node name="Description" type="Label" parent="UIRoot/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 10)
+layout_mode = 2
+text = "Let we imagine there a huge text with several words with no sense. What is the behaviour of this Label? Just be the wider and wider? Or can I wrap it?"
+label_settings = SubResource("LabelSettings_sehws")
+autowrap_mode = 2
