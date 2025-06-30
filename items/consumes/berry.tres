@@ -6,11 +6,10 @@
 [resource]
 script = ExtResource("1_ss76n")
 heal = 25
-cooldown = 0.0
+cooldown = 5.0
 id = "berry"
 name = "Blueberry"
 texture = ExtResource("2_yxp83")
 category = "consume"
 tags = Array[String]([])
 desc = "Some berries"
-max_stack = 99

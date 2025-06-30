@@ -12,4 +12,3 @@ category = "material"
 tags = Array[String](["placeable"])
 desc = "Stone wall
 [WIP] Place where you want"
-max_stack = 99

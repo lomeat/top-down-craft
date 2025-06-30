@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_agdob")
 plant_id = "bush"
-grow_time = 10000.0
+grow_time = 10.0
 id = "bush_seed"
 name = "Bush Seed"
 texture = ExtResource("2_p7pf4")

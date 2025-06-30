@@ -19,7 +19,11 @@ func setup(item_res: ItemRes):
 		await ready
 	
 	name_label.text = item_res.name
-	desc_label.text= item_res.desc
+	desc_label.text = item_res.desc + "\n\n"
+
+	var stats = item_res.get_stats()
+	for id in stats:
+		desc_label.text += id + ": " + str(stats[id]) + "\n"
 
 func show_at_position(pos: Vector2):
 	root.visible = true

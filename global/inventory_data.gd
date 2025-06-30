@@ -63,7 +63,7 @@ func check_item(id: String) -> bool:
 	if inventory.has(id):
 		return true
 	else:
-		print("Inventory has not: ", id)
+		# print("Inventory has not: ", id)
 		return false
 
 func clear():

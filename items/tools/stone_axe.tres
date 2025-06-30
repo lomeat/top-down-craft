@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_7hhoh")
 damage = 2
-durability = 0
+durability = 100
 id = "stone_axe"
 name = "Stone Axe"
 texture = ExtResource("2_k4fcp")

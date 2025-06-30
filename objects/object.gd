@@ -4,7 +4,7 @@ extends StaticBody2D
 @onready var sprite := $Sprite2D
 
 @export var loot_table: LootTable
-@export var max_health := 2
+@export var max_health := 1
 
 var current_health = max_health
 var rng := RandomNumberGenerator.new()
@@ -61,7 +61,7 @@ func spawn_item(item_res: ItemRes, total: int):
 		await get_tree().process_frame
 		spawn_animation(item, target_position)
 	else:
-		printerr("There is no parent to spawn dropped item")
+		push_error("There is no parent to spawn dropped item")
 
 func spawn_animation(item: Node2D, target_position: Vector2):
 	var tween = item.create_tween()

@@ -51,6 +51,9 @@ autowrap_mode = 2
 [node name="Description" type="Label" parent="UIRoot/PanelContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(200, 10)
 layout_mode = 2
-text = "Let we imagine there a huge text with several words with no sense. What is the behaviour of this Label? Just be the wider and wider? Or can I wrap it?"
+text = "Let we imagine there a huge text with several words with no sense. What is the behaviour of this Label? Just be the wider and wider? Or can I wrap it?
+
+Damage: 2
+Durability: 100"
 label_settings = SubResource("LabelSettings_sehws")
 autowrap_mode = 2
