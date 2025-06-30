@@ -4,11 +4,26 @@ signal inventory_updated(_inventory: Dictionary)
 
 var inventory: Dictionary = {}
 
+### Inventory Type (when you dont have NORMAL types)
+# {
+# 	[id]: {
+# 		data: ItemRes
+# 		count: int
+# 	}
+# }
+### Example
+# {
+# 	"wood": {
+# 		"data": item,
+# 		"count": 12
+# 	}
+# }
+
 func add_item(item: ItemRes, count: int = 1):
 	var id = item.id
 	var res = ItemDB.get_item(id)
 	if not res:
-		push_error("Item not found: ", id)
+		push_error("Item doesnt exist: ", id)
 		return
 	
 	if inventory.has(id):
@@ -16,7 +31,6 @@ func add_item(item: ItemRes, count: int = 1):
 	else:
 		inventory[id] = { "data": res, "count": count }
 
-	# check_max_stack(id, res)
 	inventory_updated.emit(inventory)
 
 
@@ -54,14 +68,3 @@ func check_item(id: String) -> bool:
 
 func clear():
 	inventory.clear()
-
-
-# TODO: Make inventory can keep items with same id
-
-# func check_max_stack(id: String, res: ItemRes):
-# 	if not check_item(id) or not res: return
-	
-# 	if inventory[id].count > res.max_stack:
-# 		var rest = inventory[id].count - res.max_stack
-# 		inventory[id].count = res.max_stack
-# 		add_item(res, rest)
