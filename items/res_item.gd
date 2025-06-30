@@ -10,5 +10,4 @@ extends Resource
 @export_category("Optional")
 @export_multiline var desc: String = ""
 
-# Make inventory can keep some items with same id
-# @export var max_stack: int = 99
+@export var max_stack: int = 99

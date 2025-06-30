@@ -2,66 +2,114 @@ extends Node2D
 
 signal inventory_updated(_inventory: Dictionary)
 
-var inventory: Dictionary = {}
+# Inventory Example
+# var inv = [
+# 	{
+# 		item: ItemRes
+# 		count: int
+# 	}
+# ]
 
-func add_item(item: ItemRes, count: int = 1):
-	var id = item.id
-	var res = ItemDB.get_item(id)
-	if not res:
-		push_error("Item not found: ", id)
+var inventory := []
+var inv_size := 8
+
+func _ready() -> void:
+	for i in range(inv_size):
+		inventory.append({ "item": null, "count": 0})
+	print("inventory logs")
+	print(inventory)
+
+func add_item(item: ItemRes, count: int = 1) -> void:
+	if check_fullness():
 		return
 	
-	if inventory.has(id):
-		inventory[id].count += count
-	else:
-		inventory[id] = { "data": res, "count": count }
+	if not check_item(item.id, false):
+		inventory.append({ "item": item, "count": count })
+		return
 
-	# check_max_stack(id, res)
+	var temp_slots = []
+	inventory = inventory.map(func(slot):
+		if slot.item and slot.item.id == item.id:
+			var result_count = slot.count + count
+			if result_count <= item.max_stack:
+				return { "item": slot.item, "count": slot.count + count }
+			else:
+				var rest = count - (item.max_stack - slot.count)
+				temp_slots.append({ "item": item, "count": rest })
+				return { "item": item, "count": item.max_stack }
+		else:
+			return slot
+	)
+	if not temp_slots.is_empty():
+		inventory.append(temp_slots[0])
+
 	inventory_updated.emit(inventory)
-
+	print(inventory)
 
 func remove_item(id: String, count: int = 1) -> void:
-	if inventory.has(id):
-		inventory[id].count -= count
-		if inventory[id].count <= 0:
-			inventory.erase(id)
-		inventory_updated.emit(inventory)
+	if not check_item(id, false):
+		return
+	
+	var min_count = get_min_count_item(id)
+	for i in range(inventory.size()):
+		if inventory[i].item.id == id and inventory[i].count == min_count:
+			if min_count <= 1:
+				inventory.remove_at(i)
+				return
+			inventory[i].count -= count
+			return
 
-func get_items() -> Dictionary:
-	return inventory
+	inventory_updated.emit(inventory)
 
-func get_all_items() -> Array[Dictionary]:
-	return inventory.values()
+func get_min_count_item(id: String) -> int:
+	var item = ItemDB.get_item(id)
+	return inventory.reduce(func(acc, slot):
+		if slot.item.id == id and slot.count <= acc:
+			return slot.count
+		else:
+			return acc
+	, item.max_stack)
 
+func get_slots_by_item(id: String) -> Array:
+	if not check_item(id): return []
+	return inventory.filter(func(slot): return slot.item.id == id)
+
+func get_items(id: String = "") -> Array:
+	if id.is_empty():
+		return inventory
+
+	return get_slots_by_item(id).map(func(slot): return slot.item)
+
+func check_fullness():
+	return inventory.size() >= inv_size
+	
 func get_item(id: String) -> Dictionary:
-	if check_item(id):
-		return inventory.get(id)
-	else:
+	if not check_item(id):
 		return {}
+	
+	return inventory.reduce(func(acc, slot):
+		if slot.item.id == id:
+			return acc.count + slot.item.count
+		else:
+			return acc
+	, { "item": {}, "count": 0 })
 
 func get_item_count(id: String) -> int:
-	if check_item(id):
-		return inventory[id].count
-	else:
+	if not check_item(id):
 		return 0
 
-func check_item(id: String) -> bool:
-	if inventory.has(id):
-		return true
-	else:
-		print("Inventory has not: ", id)
-		return false
+	# Probably need check with .has()
+	return int(get_item(id).count)
+
+func check_item(id: String, is_error: bool = true) -> bool:
+	return inventory.any(func(slot):
+		if slot.item:
+			return slot.item.id == id
+		else:
+			if is_error:
+				push_error("Item was not found ", id)
+			return false	
+	)
 
 func clear():
 	inventory.clear()
-
-
-# TODO: Make inventory can keep items with same id
-
-# func check_max_stack(id: String, res: ItemRes):
-# 	if not check_item(id) or not res: return
-	
-# 	if inventory[id].count > res.max_stack:
-# 		var rest = inventory[id].count - res.max_stack
-# 		inventory[id].count = res.max_stack
-# 		add_item(res, rest)

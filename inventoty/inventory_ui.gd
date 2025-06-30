@@ -24,17 +24,8 @@ func toggle(isOn: bool = false):
 		anim.tween_property(root, "modulate:a", 1, 0.2).set_ease(Tween.EASE_IN)
 		
 
-func update_ui(inventory: Dictionary):
-	for slot in slots:
-		slot.update_slot("", 0)
-	
-	var index = 0
-	for id in inventory:
-		if index >= slots.size():
-			break
-		var data = inventory[id]
-		slots[index].update_slot(id, data.count)
-		index += 1
+func update_ui(inventory: Array):
+	slots = inventory
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("toggle_inventory"):
