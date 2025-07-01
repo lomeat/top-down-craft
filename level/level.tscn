@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://c3c56kupjcxgx"]
 
 [ext_resource type="PackedScene" uid="uid://b70mk50ktimrw" path="res://player/player.tscn" id="1_32yuu"]
-[ext_resource type="Script" path="res://level/game_controller.gd" id="1_f2i2t"]
+[ext_resource type="Script" path="res://controllers/game_controller.gd" id="1_hs5ha"]
 [ext_resource type="PackedScene" uid="uid://8u7wurf52mf8" path="res://inventoty/inventory_ui.tscn" id="2_q0b1n"]
 [ext_resource type="PackedScene" uid="uid://c7bghsuyjo7h4" path="res://objects/bush.tscn" id="3_37xdl"]
 [ext_resource type="FontFile" uid="uid://b3l1vf8q6clbj" path="res://fonts/BlockBlueprint.ttf" id="3_a2yr7"]
@@ -14,7 +14,7 @@ font_size = 40
 font_color = Color(1, 1, 1, 0.4)
 
 [node name="Level" type="Node2D"]
-script = ExtResource("1_f2i2t")
+script = ExtResource("1_hs5ha")
 
 [node name="InventoryUI" parent="." instance=ExtResource("2_q0b1n")]
 visible = false

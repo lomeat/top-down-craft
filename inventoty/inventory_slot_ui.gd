@@ -15,6 +15,8 @@ var anim: Tween
 var item_id: String
 var item_res: ItemRes
 
+var animation: Tween
+
 func _ready() -> void:
 	back_icon.modulate.a = 0
 
@@ -24,12 +26,28 @@ func _ready() -> void:
 	add_child(tooltip_timer)
 	tooltip_timer.timeout.connect(_show_tooltip)
 
-	tooltip = preload("res://items/item_tooltip.tscn").instantiate()
 	add_child(tooltip)
 	tooltip.root.visible = false
 
-	mouse_entered.connect(_start_timer)
-	mouse_exited.connect(_stop_timer)
+	var outline_material = ShaderMaterial.new()
+	outline_material.shader = load("res://items/outline.gdshader")
+	outline_material.set_shader_parameter("outline_width", 0.0)
+	outline_material.set_shader_parameter("outline_color", Color(1,1,1,0))
+	item_icon.material = outline_material
+
+	mouse_entered.connect(_on_mouse_entered)
+	mouse_exited.connect(_on_mouse_exited)
+
+# --- Other ---
+
+func _on_mouse_entered() -> void:
+	_start_timer()
+	_start_hover_animation()
+
+func _on_mouse_exited() -> void:
+	_stop_timer()
+	_stop_hover_animation()
+
 
 # --- Main (slot) ---
 
@@ -45,11 +63,12 @@ func update_slot(id: String, count: int) -> void:
 
 	item_id = id	
 	item_res = res
-	animate()
+	_update_animation()
 
 func clear_slot():
 	item_icon.texture = null
 	count_label.text = ""
+
 
 # --- Tooltip ---
 
@@ -75,11 +94,32 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and tooltip.root.visible:
 		_tooltip_update_position()
 
+
 # --- Animation ---
 
-func animate():
+func _update_animation():
 	item_icon.scale = Vector2(0.6, 0.6)
 	anim = create_tween()
 	anim.tween_property(item_icon, "scale", Vector2(1.1, 1.1), 0.1).set_ease(Tween.EASE_IN)
 	anim.tween_property(back_icon, "modulate:a", 0.3, 0.1).set_ease(Tween.EASE_IN)
 	anim.tween_property(item_icon, "scale", Vector2.ONE, 0.1).set_ease(Tween.EASE_IN)
+
+func _start_hover_animation():
+	if is_mouse_over and item_res:
+		item_icon.scale = Vector2.ONE
+		animation = create_tween()
+		animation.set_parallel(true) 
+		animation.tween_property(item_icon.material, "shader_parameter/outline_width", 4.0, 0.1).set_ease(Tween.EASE_IN)
+		animation.tween_property(item_icon.material, "shader_parameter/outline_color", Color(1, 1, 1, 0.5), 0.1).set_ease(Tween.EASE_IN)
+		animation.tween_property(item_icon, "scale", Vector2(1.2, 1.2), 0.1).set_ease(Tween.EASE_IN)
+
+func _stop_hover_animation():
+	if not item_res:
+		return
+	
+	if not is_mouse_over:
+		animation = create_tween()
+		animation.set_parallel(true) 
+		animation.tween_property(item_icon.material, "shader_parameter/outline_width", 0, 0.1).set_ease(Tween.EASE_IN)
+		animation.tween_property(item_icon.material, "shader_parameter/outline_color", Color(1, 1, 1, 0), 0.1).set_ease(Tween.EASE_IN)
+		animation.tween_property(item_icon, "scale", Vector2.ONE, 0.1).set_ease(Tween.EASE_IN)
