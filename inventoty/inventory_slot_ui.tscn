@@ -1,18 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cm2rftdr6i3u8"]
+[gd_scene load_steps=5 format=3 uid="uid://cm2rftdr6i3u8"]
 
 [ext_resource type="Script" path="res://inventoty/inventory_slot_ui.gd" id="1_w60wd"]
 [ext_resource type="Texture2D" uid="uid://ih2hkvgv4dqc" path="res://inventoty/assets/inventory_slot.png" id="2_s4n87"]
 [ext_resource type="Texture2D" uid="uid://bh4k8x5tlh5uy" path="res://inventoty/assets/circle.png" id="3_4bbm4"]
-[ext_resource type="FontFile" uid="uid://cb1ausronpawj" path="res://fonts/ByteBounce.ttf" id="4_gqvca"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_cyoyo"]
-font = ExtResource("4_gqvca")
-font_size = 64
-outline_size = 12
-outline_color = Color(0, 0, 0, 1)
-shadow_size = 0
-shadow_color = Color(0, 0, 0, 1)
-shadow_offset = Vector2(2, 2)
+[ext_resource type="LabelSettings" uid="uid://d4b6p2mgoaanq" path="res://inventoty/font_count_label.tres" id="4_g6rg4"]
 
 [node name="InventorySlotUI" type="Control"]
 custom_minimum_size = Vector2(128, 128)
@@ -89,6 +80,6 @@ offset_right = -17.0
 offset_bottom = -15.0
 grow_horizontal = 0
 grow_vertical = 0
-label_settings = SubResource("LabelSettings_cyoyo")
+label_settings = ExtResource("4_g6rg4")
 horizontal_alignment = 2
 vertical_alignment = 2

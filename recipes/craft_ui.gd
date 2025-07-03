@@ -6,9 +6,13 @@ extends CanvasLayer
 @onready var container := $UIRoot/PanelContainer/CraftContainer/RecipesContainer
 @onready var root := $UIRoot
 
+@export var inventory_id: String = "player"
+
 var anim: Tween
 
 func _ready() -> void:
+	await InventoryManager.inventory_registered
+
 	visible = false
 	update_recipes()
 
@@ -25,13 +29,15 @@ func update_recipes():
 		recipe_ui.update()
 
 func craft_recipe(recipe: RecipeRes):
+	var inv = InventoryManager.get_inv(inventory_id)
 	# Check enough items
 	for ing in recipe.ingredients:
 		var item_id = ing.item.id
 		var item_name = ing.item.name
 		var count = ing.count
+		var has_count = inv.get_item_count(item_id)
 
-		if InventoryData.get_item_count(item_id) < count:
+		if has_count == null or has_count < count:
 			print("Not enough items for craft | name: ", item_name, ", id: ", item_id)
 			return
 
@@ -39,10 +45,10 @@ func craft_recipe(recipe: RecipeRes):
 	for ing in recipe.ingredients:
 		var id = ing.item.id
 		var count = ing.count
-		InventoryData.remove_item(id, count)
+		inv.remove_item(id, count)
 	print("Items were removed from inventory: ", recipe.name)
 
-	InventoryData.add_item(recipe.result, recipe.result_count)
+	inv.add_item(recipe.result, recipe.result_count)
 	update_recipes()
 
 

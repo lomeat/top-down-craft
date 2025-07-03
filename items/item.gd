@@ -3,6 +3,8 @@ extends Area2D
 
 @onready var sprite: Sprite2D = $Sprite2D
 
+signal ready_for_pickup
+
 @export var animation_duration := 0.4
 
 var item_res: ItemRes
@@ -34,6 +36,9 @@ func setup(res: ItemRes, total: int):
 
 
 func _ready() -> void:
+	monitorable = true
+	monitoring = true
+	
 	var outline_material = ShaderMaterial.new()
 	outline_material.shader = load("res://items/outline.gdshader")
 	outline_material.set_shader_parameter("outline_width", 0.0)
@@ -42,7 +47,7 @@ func _ready() -> void:
 	
 	await get_tree().create_timer(0.3).timeout
 	can_picked_up = true
-	GlobalSignals.item_ready_pickup.emit(self)
+	ready_for_pickup.emit()
 
 	
 func destroy():
@@ -86,5 +91,3 @@ func animate_collect(duration: float) -> void:
 	animation.tween_property(self, "global_position", player_pos, duration)
 	animation.tween_property(self, "scale", Vector2(1, 1), duration)
 	animation.tween_property(self, "modulate:a", 0.0, duration)
-
-

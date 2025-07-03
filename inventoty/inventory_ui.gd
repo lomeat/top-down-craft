@@ -6,34 +6,37 @@ extends CanvasLayer
 
 @export var inventory_id := "player"
 
-# Slots Example
-# [
-# 	{ inventory_id: "player", slot_id: 2, item: item }
-# ]
-var slots_ui: Array[InventorySlotUI] = []
 var anim: Tween
 
 func _ready() -> void:
-	visible = false
-	slots_ui = grid.get_children().filter(func (child): return child is InventorySlotUI)
-	# InventoryData.inventory_updated.connect(update_ui)
-
-	for i in range(slots_ui.size()):
-		slots_ui[i].slot_id = i
-		slots_ui[i].inventory_id = inventory_id 
-
-
-func update_ui(inventory: Dictionary):
-	for slot in slots:
-		slot.update_slot("", 0)
+	await InventoryManager.inventory_registered
 	
-	var index = 0
-	for id in inventory:
-		if index >= slots.size():
-			break
-		var data = inventory[id]
-		slots[index].update_slot(id, data.count)
-		index += 1
+	visible = false
+
+	InventoryManager.inventory_updated.connect(_on_inventory_updated)
+	update_ui()
+
+	for i in range(grid.get_child_count()):
+		var slot = grid.get_child(i)
+		if slot is InventorySlotUI:
+			slot.slot_id = i
+			slot.inventory_id = inventory_id
+
+
+func _on_inventory_updated(updated_id: String) -> void:
+	if updated_id == inventory_id:
+		update_ui()
+
+func update_ui():
+	var inv = InventoryManager.get_inv(inventory_id)
+	if not inv:
+		return
+
+	for i in range(grid.get_child_count()):
+		var slot = grid.get_child(i)
+		if slot is InventorySlotUI:
+			var item = inv.get_slot(i)
+			slot.update_slot(item)
 
 func toggle(event: InputEvent, isOn: bool = false):
 	if event.is_action_pressed("toggle_inventory"):
@@ -48,9 +51,6 @@ func toggle(event: InputEvent, isOn: bool = false):
 			visible = isOn || !visible
 			anim = create_tween()
 			anim.tween_property(root, "modulate:a", 1, 0.2).set_ease(Tween.EASE_IN)
-			# TODO: MAybe remove tihs
-			# var inventory = InventoryData.get_items()
-			# update_ui(inventory)
 
 
 func _input(event: InputEvent) -> void:

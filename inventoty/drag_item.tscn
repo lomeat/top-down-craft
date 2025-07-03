@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3jfc5fpw7imi"]
+
+[ext_resource type="Script" path="res://inventoty/drag_item.gd" id="1_ladvl"]
+[ext_resource type="Texture2D" uid="uid://c44ll2834k7tr" path="res://items/materials/stone_wall.png" id="1_t61r2"]
+[ext_resource type="LabelSettings" uid="uid://d4b6p2mgoaanq" path="res://inventoty/font_count_label.tres" id="2_x7ga2"]
+
+[node name="DragItem" type="Control"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 96.0
+offset_bottom = 96.0
+script = ExtResource("1_ladvl")
+
+[node name="Icon" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_t61r2")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "12"
+label_settings = ExtResource("2_x7ga2")
+horizontal_alignment = 2
+vertical_alignment = 2

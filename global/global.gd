@@ -1,15 +1,7 @@
 extends Node
 
-signal item_ready_pickup(item: Item)
-signal item_collected(item: Item)
-
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
-
-# Never be called
-func remove_vscode_warnings():
-	item_ready_pickup.emit()
-	item_collected.emit()
 
 # --- Scene actions ---
 

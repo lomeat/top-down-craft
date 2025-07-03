@@ -1,5 +1,4 @@
-# TODO: Remove from autoload, now its just a class
-# class_name InventoryData
+class_name InventoryData
 extends RefCounted
 
 signal inventory_updated(_inventory: Dictionary)
@@ -19,6 +18,7 @@ var inv_size := 8
 func _init() -> void:
 	for i in range(inv_size):
 		inv[i] = null
+	inventory_updated.emit(inv)
 
 func add_item(item: ItemRes, count: int = 1) -> bool:
 	var id = item.id
@@ -39,6 +39,7 @@ func add_item(item: ItemRes, count: int = 1) -> bool:
 		elif inv[slot].id == item.id:
 			inv[slot].count += count
 			inventory_updated.emit(inv)
+			return true
 	return false
 
 func set_slot(slot_id: int, item: Dictionary) -> void:
@@ -49,7 +50,7 @@ func set_slot(slot_id: int, item: Dictionary) -> void:
 
 func remove_item(id: String, count: int = 1) -> bool:
 	for slot in inv:
-		if inv[slot].id == id:
+		if inv[slot] != null and inv[slot].id == id:
 			inv[slot].count -= count
 			if inv[slot].count <= 0:
 				remove_slot(slot)
@@ -64,11 +65,10 @@ func remove_slot(slot_id: int) -> bool:
 		return true
 	return false
 
-# @doc -> ItemRes{} | null
 func get_item(id: String):
 	for slot in inv:
-		if inv[slot].id == id:
-			return inv[slot]
+		if inv[slot] != null and inv[slot].id == id:
+			return inv.get(slot)
 	return null
 
 func get_slot(slot_id: int):
@@ -76,12 +76,12 @@ func get_slot(slot_id: int):
 		return inv.get(slot_id)
 	return null
 
-func get_items() -> Dictionary:
-	return inv
-
+func get_items() -> Array:
+	return inv.values()
+	
 func get_item_count(id: String):
 	for slot in inv:
-		if inv[slot].id == id:
+		if inv[slot] != null and inv[slot].id == id:
 			return inv[slot].count
 	return null
 

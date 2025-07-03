@@ -3,12 +3,15 @@ extends Node2D
 @onready var player: Player = $Player
 @onready var player_pickup_area: Area2D = $Player/PickupArea
 
-var inventory = {}
 var pending_pickups = []
 
 func _ready() -> void:
 	if not player:
 		push_error("Add a Player to the scene!")
+
+	var player_inventory = InventoryData.new()
+	player_inventory.inv_size = 8
+	InventoryManager.register_inventory("player", player_inventory)
 	
 	player.sword_attacked.connect(damage_item)
 	player.pickup_requested.connect(pickup_items)
@@ -16,18 +19,31 @@ func _ready() -> void:
 	player_pickup_area.area_entered.connect(_ready_item)
 	player_pickup_area.area_exited.connect(_unready_item)
 
-	GlobalSignals.item_collected.connect(InventoryData.add_item)
-	GlobalSignals.item_ready_pickup.connect(_check_items_collisions)
+	await get_tree().create_timer(0.1).timeout
+	_check_items_collisions()
 
-func _check_items_collisions(item: Item):
-	if player_pickup_area.overlaps_area(item):
-		_ready_item(item)
+
+func _check_items_collisions():
+	var areas = player_pickup_area.get_overlapping_areas()
+	for area in areas:
+		if area is Item:
+			_ready_item(area)
 
 func _ready_item(body: Area2D) -> void:
 	if body is Item:
 		if body.can_picked_up:
-			pending_pickups.append(body)
-			body.run_animation("highlight")
+			_pick_up(body)
+		else:
+			body.ready_for_pickup.connect(_on_item_ready.bind(body), CONNECT_ONE_SHOT)
+
+func _on_item_ready(item: Item):
+	if player_pickup_area.overlaps_area(item) and item.can_picked_up:
+		_pick_up(item)
+
+func _pick_up(item: Item):
+	if not pending_pickups.has(item):
+		pending_pickups.append(item)
+		item.run_animation("highlight")
 
 func _unready_item(body: Area2D) -> void:
 	if body is Item and pending_pickups.has(body):
@@ -41,9 +57,6 @@ func damage_item(target: Node2D, _damage: int):
 func _physics_process(_delta: float) -> void:
 	if player.isAutoloot:
 		pickup_items()
-	else:
-		return
-
 
 func pickup_items():
 	var items = pending_pickups.duplicate()
@@ -55,8 +68,11 @@ func pickup_items():
 
 func collect_item(item: Item):
 	await item.destroy()
-	GlobalSignals.item_collected.emit(item.item_res, 1)
 
-
+	var player_inv = InventoryManager.get_inv("player")
+	if player_inv:
+		player_inv.add_item(item.item_res, 1)
+	else:
+		push_error("Player inventory not found")
 
 

@@ -15,6 +15,9 @@ var anim: Tween
 var item_id: String
 var item_res: ItemRes
 
+var slot_id: int = -1
+var inventory_id: String = ""
+
 var animation: Tween
 
 func _ready() -> void:
@@ -51,24 +54,48 @@ func _on_mouse_exited() -> void:
 
 # --- Main (slot) ---
 
-func update_slot(id: String, count: int) -> void:
-	if not id or id.is_empty() or count <= 0:
+func update_slot(slot) -> void:
+	if slot == null:
 		clear_slot()
-		return 
+		return
 	
-	var res = ItemDB.get_item(id)
+	var res = ItemDB.get_item(slot.id)
 	if res:
 		item_icon.texture = res.texture
-		count_label.text = str(count) if count > 1 else ""
+		count_label.text = str(slot.count) if slot.count > 1 else ""
 
-	item_id = id	
 	item_res = res
+	item_id = res.id
 	_update_animation()
+
 
 func clear_slot():
 	item_icon.texture = null
 	count_label.text = ""
 
+func get_slot_data():
+	var inventory = InventoryManager.get_inv(inventory_id)
+	if inventory:
+		return inventory.get_slot(slot_id)
+	return null
+
+# --- Dragging ---
+
+func _gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.is_pressed():
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			if get_slot_data() and InventoryManager.drag_state.is_empty():
+				print("Stating drag")
+				InventoryManager.start_drag(inventory_id, slot_id)
+				return
+
+			if InventoryManager.drag_state.is_empty():
+				print("trying to drop")
+				if InventoryManager.drop_to_slot(inventory_id, slot_id):
+					print("drop succes")
+					InventoryManager.end_drag(true)
+				else:
+					print("drop failed")
 
 # --- Tooltip ---
 
