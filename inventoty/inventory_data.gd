@@ -42,10 +42,10 @@ func add_item(item: ItemRes, count: int = 1) -> bool:
 			return true
 	return false
 
-func set_slot(slot_id: int, item: Dictionary) -> void:
+func set_slot(slot_id: int, slot: Dictionary) -> void:
 	if slot_id < 0 or slot_id >= inv_size:
 		return
-	inv[slot_id] = item
+	inv[slot_id] = slot
 	inventory_updated.emit(inv)
 
 func remove_item(id: String, count: int = 1) -> bool:

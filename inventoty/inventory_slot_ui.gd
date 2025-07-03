@@ -21,6 +21,7 @@ var inventory_id: String = ""
 var animation: Tween
 
 func _ready() -> void:
+	mouse_filter = MOUSE_FILTER_STOP
 	back_icon.modulate.a = 0
 
 	tooltip_timer = Timer.new()
@@ -46,32 +47,35 @@ func _ready() -> void:
 func _on_mouse_entered() -> void:
 	_start_timer()
 	_start_hover_animation()
+	_set_current()
 
 func _on_mouse_exited() -> void:
 	_stop_timer()
 	_stop_hover_animation()
+	_reset_current()
 
 
 # --- Main (slot) ---
 
+# Dictionary | null
 func update_slot(slot) -> void:
-	if slot == null:
+	if not slot:
 		clear_slot()
 		return
-	
-	var res = ItemDB.get_item(slot.id)
-	if res:
-		item_icon.texture = res.texture
-		count_label.text = str(slot.count) if slot.count > 1 else ""
 
-	item_res = res
-	item_id = res.id
+	item_icon.texture = slot.data.texture
+	count_label.text = str(slot.count) if slot.count > 1 else ""
+
+	item_res = slot.data
+	item_id = slot.data.id
 	_update_animation()
-
 
 func clear_slot():
 	item_icon.texture = null
 	count_label.text = ""
+	back_icon.modulate.a = 0
+	item_res = null
+	item_id = ""
 
 func get_slot_data():
 	var inventory = InventoryManager.get_inv(inventory_id)
@@ -81,21 +85,28 @@ func get_slot_data():
 
 # --- Dragging ---
 
-func _gui_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.is_pressed():
-		if event.button_index == MOUSE_BUTTON_LEFT:
-			if get_slot_data() and InventoryManager.drag_state.is_empty():
-				print("Stating drag")
-				InventoryManager.start_drag(inventory_id, slot_id)
-				return
+func _set_current():
+	InventoryManager.current_inventory_id = inventory_id
+	InventoryManager.current_slot = self
 
-			if InventoryManager.drag_state.is_empty():
-				print("trying to drop")
-				if InventoryManager.drop_to_slot(inventory_id, slot_id):
-					print("drop succes")
-					InventoryManager.end_drag(true)
-				else:
-					print("drop failed")
+func _reset_current():
+	if InventoryManager.current_slot == self:
+		InventoryManager.current_inventory_id = ""
+		InventoryManager.current_slot = null
+
+func _gui_input(event: InputEvent) -> void:
+	# Start dragging
+	if event is InputEventMouseButton and event.is_pressed():
+		if event.button_index == MOUSE_BUTTON_LEFT and not InventoryManager.drag_state:
+			var inventory = InventoryManager.get_inv(inventory_id)
+			if inventory and inventory.get_slot(slot_id):
+				InventoryManager.start_drag(inventory_id, slot_id)
+				clear_slot()
+				get_viewport().set_input_as_handled()
+	# Tooltip
+	if event is InputEventMouseMotion and tooltip.root.visible:
+		_tooltip_update_position()
+
 
 # --- Tooltip ---
 
@@ -115,10 +126,6 @@ func _tooltip_update_position():
 func _show_tooltip():
 	if is_mouse_over and item_res:
 		tooltip.setup(item_res)
-		_tooltip_update_position()
-
-func _input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion and tooltip.root.visible:
 		_tooltip_update_position()
 
 

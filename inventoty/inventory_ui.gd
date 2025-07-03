@@ -14,6 +14,7 @@ func _ready() -> void:
 	visible = false
 
 	InventoryManager.inventory_updated.connect(_on_inventory_updated)
+	InventoryManager.drag_ended.connect(func(_isDropped): update_ui())
 	update_ui()
 
 	for i in range(grid.get_child_count()):
@@ -29,8 +30,7 @@ func _on_inventory_updated(updated_id: String) -> void:
 
 func update_ui():
 	var inv = InventoryManager.get_inv(inventory_id)
-	if not inv:
-		return
+	if not inv: return
 
 	for i in range(grid.get_child_count()):
 		var slot = grid.get_child(i)
