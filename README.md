@@ -6,7 +6,7 @@
 
 Короче...
 
-[Изначальная задумка](./roadmap.md)
+[Изначальная задумка](./docs/roadmap.md)
 
 ## Содержание
 
@@ -123,6 +123,6 @@
 
 ## Вопросы
 
-- [Папочки](./question_1.md) **РЕШЕНО**
+- [Папочки](./docs/question_1.md) **РЕШЕНО**
 
-- [Drag & Drop](./question_2.md)
+- [Drag & Drop](./docs/question_2.md)

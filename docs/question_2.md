@@ -48,3 +48,35 @@ if id == "empty":
 ```
 
 **Вопрос все еще открыт, я не решил**
+
+## Так, мысль такая
+
+```
+drag_started
+
+if slot was clicked
+    - inv does not change
+    - slot clear
+    - drag item setup
+
+drop_to_slot
+
+if slot was clicked:
+    - inv set item to new slot
+    - inv remove item from old slot
+drag_ended (true)
+
+if in slot was item when slot was clicked:
+    - inv set item to item 2 slot
+    - inv remove item from old slot
+    - drag state setup
+drag_ended (true)
+drag_started
+
+if drag was canceled:
+    - inv does not change
+    - drag state reset
+drag_ended (false)
+```
+
+![logic](<images/CleanShot 2025-07-09 at 09.43.56@2x.jpg>)

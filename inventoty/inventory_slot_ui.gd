@@ -77,12 +77,6 @@ func clear_slot():
 	item_res = null
 	item_id = ""
 
-func get_slot_data():
-	var inventory = InventoryManager.get_inv(inventory_id)
-	if inventory:
-		return inventory.get_slot(slot_id)
-	return null
-
 # --- Dragging ---
 
 func _set_current():
