@@ -3,6 +3,7 @@ extends Node
 var items: Dictionary = {}
 
 func _ready():
+	# я просто забил сделать deep поиск
 	load_items(["res://items/materials/", "res://items/tools/", "res://items/seeds/", "res://items/consumes/"])
 
 func load_items(paths: Array[String]):
